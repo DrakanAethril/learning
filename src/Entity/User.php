@@ -24,6 +24,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
+    // added by seb for easyAdmin password change
+    private ?string $plainPassword = null;
+
     /**
      * @var string The hashed password
      */
@@ -142,6 +145,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->last_login = $last_login;
 
+        return $this;
+    }
+
+    public function getPlainPassword() {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
         return $this;
     }
 }
