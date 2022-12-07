@@ -1,17 +1,86 @@
-{% extends 'base.html.twig' %}
+{% extends 'empty.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}
+	{{'register.title'|trans}}
+{% endblock %}
+
+
+
+{% block form_row %}
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form) -}}
+{% endblock form_row %}
 
 {% block body %}
-    <h1>Register</h1>
+	<h4 class="mb-2">{{'register.welcome'|trans}}</h4>
+	<p class="mb-4">{{'register.signin_phrase'|trans}}</p>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+	{{ form_start(registrationForm) }}
+	<div class="mb-3">
+		<label for="email" class="form-label">{{'form.email.label'|trans}}</label>
+		{{ form_row(registrationForm.email, {
+            label: false,
+            attr: {
+                class: 'form-control'
+            }
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+	</div>
+	<div class="mb-3 form-password-toggle">
+		<label class="form-label" for="password">{{'form.password.label'|trans}}</label>
+		<div class="input-group input-group-merge">
+			{{ form_widget(registrationForm.plainPassword.first, {
+                    label: false,
+                    attr: {
+                        class: 'form-control',
+                        placeholder: "************"
+                    },
+                    id: "password"
+                }) }}
+			<span class="input-group-text cursor-pointer">
+				<i class="bx bx-hide"></i>
+			</span>
+		</div>
+	</div>
+    <div class="mb-3 form-password-toggle">
+		<label class="form-label" for="password">{{'form.passwordrepeat.label'|trans}}</label>
+		<div class="input-group input-group-merge">
+			{{ form_widget(registrationForm.plainPassword.second, {
+                    label: false,
+                    attr: {
+                        class: 'form-control',
+                        placeholder: "************"
+                    },
+                    id: "password-repeat"
+                }) }}
+			<span class="input-group-text cursor-pointer">
+				<i class="bx bx-hide"></i>
+			</span>
+		</div>
+	</div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+	<div class="mb-3">
+		<div class="form-check">
+			{{ form_row(registrationForm.agreeTerms, {
+                label: false,
+                attr: {
+                    class: 'form-check-input'
+                }
+            }) }}
+			<label class="form-check-label" for="terms-conditions">
+				I agree to
+				<a href="javascript:void(0);">privacy policy & terms</a>
+			</label>
+		</div>
+	</div>
+	<button class="btn btn-primary d-grid w-100">{{'register.signup.button'|trans}}</button>
+	{{ form_end(registrationForm) }}
+
+
+	<p class="text-center">
+		<span>{{'register.already.text'|trans}}</span>
+		<a href="auth-register-basic.html">
+			<span>{{'register.signin.instead'|trans}}</span>
+		</a>
+	</p>
 {% endblock %}
