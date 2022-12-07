@@ -26,6 +26,24 @@
             }
         }) }}
 	</div>
+    <div class="mb-3">
+		<label for="email" class="form-label">{{'form.firstname.label'|trans}}</label>
+		{{ form_row(registrationForm.firstname, {
+            label: false,
+            attr: {
+                class: 'form-control'
+            }
+        }) }}
+	</div>
+    <div class="mb-3">
+		<label for="lastname" class="form-label">{{'form.lastname.label'|trans}}</label>
+		{{ form_row(registrationForm.lastname, {
+            label: false,
+            attr: {
+                class: 'form-control'
+            }
+        }) }}
+	</div>
 	<div class="mb-3 form-password-toggle">
 		<label class="form-label" for="password">{{'form.password.label'|trans}}</label>
 		<div class="input-group input-group-merge">
