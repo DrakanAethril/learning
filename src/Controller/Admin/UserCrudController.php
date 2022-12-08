@@ -45,6 +45,12 @@ class UserCrudController extends AbstractCrudController
                          ->setChoices( array_combine( $roles, $roles ) )
                          ->allowMultipleChoices()
                          ->renderAsBadges();
+        yield AssociationField::new('structures')
+            ->setFormTypeOption('by_reference', false)
+            ->autocomplete();
+        yield AssociationField::new('cohorts')
+            ->setFormTypeOption('by_reference', false)
+            ->autocomplete();
         yield FormField::addPanel( 'Change password' )->setIcon( 'fa fa-key' );
         yield Field::new( 'plainPassword', 'New password' )->onlyWhenCreating()->setRequired( true )
                    ->setFormType( RepeatedType::class )

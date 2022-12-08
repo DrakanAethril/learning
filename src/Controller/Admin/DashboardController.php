@@ -10,7 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Controller\Admin\UserCrudController;
+use App\Entity\Structure;
 use App\Entity\User;
+use App\Entity\Cohort;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -31,7 +33,9 @@ class DashboardController extends AbstractDashboardController
     {
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Users', 'fas fa-map-marker-alt', User::class);
+        yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Structure', 'fas fa-school', Structure::class);
+        yield MenuItem::linkToCrud('Cohort', 'fas fa-users-line', Cohort::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

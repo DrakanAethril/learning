@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -41,6 +43,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $last_login = null;
+
+
+    #[ORM\ManyToMany(targetEntity: Cohort::class, mappedBy: 'users')]
+    private Collection $cohorts;
+
+    #[ORM\ManyToMany(targetEntity: Structure::class, mappedBy: 'users')]
+    private Collection $structures;
+
+    public function __construct()
+    {
+        $this->cohorts = new ArrayCollection();
+        $this->structures = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -156,5 +171,64 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->plainPassword = $plainPassword;
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Cohort>
+     */
+    public function getCohorts(): Collection
+    {
+        return $this->cohorts;
+    }
+
+    public function addCohort(Cohort $cohort): self
+    {
+        if (!$this->cohorts->contains($cohort)) {
+            $this->cohorts->add($cohort);
+            $cohort->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCohort(Cohort $cohort): self
+    {
+        if ($this->cohorts->removeElement($cohort)) {
+            $cohort->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Structure>
+     */
+    public function getStructures(): Collection
+    {
+        return $this->structures;
+    }
+
+    public function addStructure(Structure $structure): self
+    {
+        if (!$this->structures->contains($structure)) {
+            $this->structures->add($structure);
+            $structure->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStructure(Structure $structure): self
+    {
+        if ($this->structures->removeElement($structure)) {
+            $structure->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return !empty($this->getLastname()) ? (!empty($this->getFirstname()) ? $this->getFirstname().' '.$this->getLastname() : $this->getLastname()) : $this->getEmail();
     }
 }
