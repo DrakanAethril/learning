@@ -51,10 +51,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Structure::class, mappedBy: 'users')]
     private Collection $structures;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Resource::class)]
+    private Collection $resources;
+
     public function __construct()
     {
         $this->cohorts = new ArrayCollection();
         $this->structures = new ArrayCollection();
+        $this->resources = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -230,5 +234,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString(): string
     {
         return !empty($this->getLastname()) ? (!empty($this->getFirstname()) ? $this->getFirstname().' '.$this->getLastname() : $this->getLastname()) : $this->getEmail();
+    }
+
+    /**
+     * @return Collection<int, Resource>
+     */
+    public function getResources(): Collection
+    {
+        return $this->resources;
+    }
+
+    public function addResource(Resource $resource): self
+    {
+        if (!$this->resources->contains($resource)) {
+            $this->resources->add($resource);
+            $resource->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResource(Resource $resource): self
+    {
+        if ($this->resources->removeElement($resource)) {
+            // set the owning side to null (unless already changed)
+            if ($resource->getAuthor() === $this) {
+                $resource->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 }
