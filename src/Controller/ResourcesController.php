@@ -29,7 +29,7 @@ class ResourcesController extends AbstractController
             $resource = $resourceRepo->findBy(['author' => $user->getId(), 'id' => $id]);
             if(empty($resource)) {
                 // should not do that
-                $this->redirectToRoute('resources_mine');
+                return $this->redirectToRoute('resources_mine');
             }
         } else {
             $resource = new Resource();
