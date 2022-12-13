@@ -1,0 +1,43 @@
+<div class="card accordion-item active border border-dark" name="quizz-elem-{{idQ}}">
+	<h2 class="accordion-header" id="headingOne">
+		<button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+			Element {{idQ}}
+		</button>
+	</h2>
+
+	<div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			<div class="input-group mb-3">
+				<span class="input-group-text">Question</span>
+				<textarea class="form-control" name="q_{{idQ}}"></textarea>
+			</div>
+
+			<div class="divider divider-info mb-3">
+				<div class="divider-text">Réponses</div>
+			</div>
+
+            <div class="row js-quizz-answers">
+                {{ include('resources/quizz/tpl_answer.html.twig', {idR: '1'})}}
+                {{ include('resources/quizz/tpl_answer.html.twig', {idR: '2'})}}
+            </div>
+
+			<div class="col-xl-12">
+				<button class="btn btn-info px-5">Ajouter une réponse</button>
+			</div>
+
+			<div class="divider divider-info mt-3">
+				<div class="divider-text">
+					<i class="bx bx-coffee-togo"></i>
+				</div>
+			</div>
+			<div class="input-group mb-3">
+				<span class="input-group-text">Explications</span>
+				<textarea class="form-control" name="q_{{idQ}}_e"></textarea>
+			</div>
+
+			<div class="text-end col-xl-12 mt-3">
+				<button class="btn btn-warning px-5">Supprimer cet élément</button>
+			</div>
+		</div>
+	</div>
+</div>

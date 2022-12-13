@@ -2995,12 +2995,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "35fd0a90b64b1483ecfd1a3a6335c89c6926b573"
+                "reference": "1f91cb40018d614cd685cc0cc88579b590c0cea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/35fd0a90b64b1483ecfd1a3a6335c89c6926b573",
-                "reference": "35fd0a90b64b1483ecfd1a3a6335c89c6926b573",
+                "url": "https://api.github.com/repos/symfony/console/zipball/1f91cb40018d614cd685cc0cc88579b590c0cea6",
+                "reference": "1f91cb40018d614cd685cc0cc88579b590c0cea6",
                 "shasum": ""
             },
             "require": {
@@ -3083,7 +3083,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-09T14:02:07+00:00"
+            "time": "2022-12-12T14:18:00+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -4098,12 +4098,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/framework-bundle.git",
-                "reference": "102e8413255aa481a9380c34d00932097cbcdc15"
+                "reference": "0b5d46eb5c429dc4312831a755682392c57c3b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/102e8413255aa481a9380c34d00932097cbcdc15",
-                "reference": "102e8413255aa481a9380c34d00932097cbcdc15",
+                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/0b5d46eb5c429dc4312831a755682392c57c3b3d",
+                "reference": "0b5d46eb5c429dc4312831a755682392c57c3b3d",
                 "shasum": ""
             },
             "require": {
@@ -4241,7 +4241,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-11T08:09:25+00:00"
+            "time": "2022-12-13T10:37:13+00:00"
         },
         {
             "name": "symfony/http-client",
@@ -8528,16 +8528,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.19",
+            "version": "9.2.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559"
+                "reference": "af7463c955007de36db0c5e26d03e2f933c2e980"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c77b56b63e3d2031bd8997fcec43c1925ae46559",
-                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/af7463c955007de36db0c5e26d03e2f933c2e980",
+                "reference": "af7463c955007de36db0c5e26d03e2f933c2e980",
                 "shasum": ""
             },
             "require": {
@@ -8593,7 +8593,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.19"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.20"
             },
             "funding": [
                 {
@@ -8601,7 +8601,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-18T07:47:47+00:00"
+            "time": "2022-12-13T07:49:28+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
