@@ -1,10 +1,10 @@
-<div class="input-group mb-3 js-quizz-answer">
-    <div class="input-group-text    ">
+<div class="input-group mb-3 js-quizz-answer" data-aid="{{idR}}">
+    <div class="input-group-text">
         <input class="form-check-input mt-0 success" type="checkbox" value="" aria-label="Checkbox for following text input" name="q_{{idQ}}_a_{{idR}}_v">
     </div>
     <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="texte de la réponse" name="q_{{idQ}}_a_{{idR}}_t">
     <div class="text-end m-2">
-        <button type="button" class="btn btn-icon btn-danger">
+        <button type="button" class="btn btn-icon btn-danger js-quizz-answer-delete">
             <span class="tf-icons bx bx-trash"></span>
         </button>
     </div>

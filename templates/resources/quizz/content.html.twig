@@ -1,8 +1,56 @@
 <div class="row mb-3">
     <div class="accordion" id="accordionExample">
-        {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'1'})}}
+        {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'1', showElem:'show'})}}
+        {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'2', showElem:''})}}
+        {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'3', showElem:''})}}
+
     </div>
 </div>
 <div class="col-xl-12">
-    <button class="btn btn-secondary px-5">Ajouter un élément</button>
+    <button class="btn btn-secondary px-5 js-quizz-elem-add">Ajouter un élément</button>
 </div>
+
+<div class="d-none" id="quizz_tpl_empty_q">
+    {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'%IDQ%', showElem:''})}}
+</div>
+<div class="d-none" id="quizz_tpl_empty_a">
+    {{ include('resources/quizz/tpl_answer.html.twig', {idQ:'%IDQ%', idR:'%IDR%', showElem:''})}}
+</div>
+
+<script type="text/javascript">
+
+ $(document).ready(function () {
+    $(".js-quizz-elem-add").click(function(e) {
+        alert( "Elem add." );
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
+    $('body').on('click','.js-quizz-answer-delete',function(e) {
+        $(this).closest(".js-quizz-answer").remove();
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
+    $('body').on('click','.js-quizz-elem-delete', function(e) {
+        $(this).closest(".js-quizz-elem-main").remove();
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
+    //$(".js-quizz-answer-add").on("click", function(e) {
+    $('body').on('click','.js-quizz-answer-add', function(e) {
+        let idQ = $(this).closest(".js-quizz-elem-main").data( "qid" );
+        let idR = $(this).closest(".js-quizz-elem-main").find(".js-quizz-answers").find(".js-quizz-answer").last().data('aid');
+        if(isNaN(idR)) {
+            idR = 0;
+        }
+        let newIdR = idR + 1;
+        let contentR = $('#quizz_tpl_empty_a').html().replace(/%IDQ%/g, idQ+'').replace(/%IDR%/g, newIdR+'');
+         $(this).closest(".js-quizz-elem-main").find(".js-quizz-answers").append(contentR);
+        e.stopPropagation();
+        e.preventDefault();
+    });
+});
+
+</script>

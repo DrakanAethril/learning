@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="PayzqM3" resname="platform.name">
+        <source>platform.name</source>
+        <target>__platform.name</target>
+      </trans-unit>
+      <trans-unit id="iSItoNa" resname="register.title">
+        <source>register.title</source>
+        <target>__register.title</target>
+      </trans-unit>
+      <trans-unit id="pKpvx72" resname="register.welcome">
+        <source>register.welcome</source>
+        <target>__register.welcome</target>
+      </trans-unit>
+      <trans-unit id="QxWZjFB" resname="register.signin_phrase">
+        <source>register.signin_phrase</source>
+        <target>__register.signin_phrase</target>
+      </trans-unit>
+      <trans-unit id="z.1ag3e" resname="form.email.label">
+        <source>form.email.label</source>
+        <target>__form.email.label</target>
+      </trans-unit>
+      <trans-unit id="_1QTC4G" resname="form.firstname.label">
+        <source>form.firstname.label</source>
+        <target>__form.firstname.label</target>
+      </trans-unit>
+      <trans-unit id="531GUtD" resname="form.lastname.label">
+        <source>form.lastname.label</source>
+        <target>__form.lastname.label</target>
+      </trans-unit>
+      <trans-unit id="W.KhcyN" resname="form.password.label">
+        <source>form.password.label</source>
+        <target>__form.password.label</target>
+      </trans-unit>
+      <trans-unit id="zbXOo1p" resname="form.passwordrepeat.label">
+        <source>form.passwordrepeat.label</source>
+        <target>__form.passwordrepeat.label</target>
+      </trans-unit>
+      <trans-unit id="m5qiE5E" resname="register.signup.button">
+        <source>register.signup.button</source>
+        <target>__register.signup.button</target>
+      </trans-unit>
+      <trans-unit id="WvfCSfP" resname="register.already.text">
+        <source>register.already.text</source>
+        <target>__register.already.text</target>
+      </trans-unit>
+      <trans-unit id="FLaKoRb" resname="register.signin.instead">
+        <source>register.signin.instead</source>
+        <target>__register.signin.instead</target>
+      </trans-unit>
+      <trans-unit id="QQnJNWT" resname="form.name.label">
+        <source>form.name.label</source>
+        <target>__form.name.label</target>
+      </trans-unit>
+      <trans-unit id="RGS3leM" resname="form.type.label">
+        <source>form.type.label</source>
+        <target>__form.type.label</target>
+      </trans-unit>
+      <trans-unit id="XH306C0" resname="form.status.label">
+        <source>form.status.label</source>
+        <target>__form.status.label</target>
+      </trans-unit>
+      <trans-unit id="Kd99AFq" resname="login.title">
+        <source>login.title</source>
+        <target>__login.title</target>
+      </trans-unit>
+      <trans-unit id="YzoF5od" resname="login.welcome">
+        <source>login.welcome</source>
+        <target>__login.welcome</target>
+      </trans-unit>
+      <trans-unit id="Onm6neC" resname="login.signin_phrase">
+        <source>login.signin_phrase</source>
+        <target>__login.signin_phrase</target>
+      </trans-unit>
+      <trans-unit id="dtIsjxp" resname="login.email.placeholder">
+        <source>login.email.placeholder</source>
+        <target>__login.email.placeholder</target>
+      </trans-unit>
+      <trans-unit id="HvXvp0B" resname="login.forgot_password.cta">
+        <source>login.forgot_password.cta</source>
+        <target>__login.forgot_password.cta</target>
+      </trans-unit>
+      <trans-unit id="KjpSSnY" resname="remember.me">
+        <source>remember.me</source>
+        <target>__remember.me</target>
+      </trans-unit>
+      <trans-unit id="NvcKPYq" resname="login.signin.button">
+        <source>login.signin.button</source>
+        <target>__login.signin.button</target>
+      </trans-unit>
+      <trans-unit id="kZr90JA" resname="login.new.link">
+        <source>login.new.link</source>
+        <target>__login.new.link</target>
+      </trans-unit>
+      <trans-unit id="EK._DgN" resname="login.new.create">
+        <source>login.new.create</source>
+        <target>__login.new.create</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
