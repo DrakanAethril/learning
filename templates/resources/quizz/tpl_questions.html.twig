@@ -1,6 +1,6 @@
-<div class="card accordion-item active border border-dark js-quizz-elem-main" name="quizz-elem-{{idQ}}" data-qid="{{idQ}}">
+<div class="card accordion-item active border border-dark js-quizz-elem-main" name="quizz-elem-{{idQ}}" id="quizz-elem-{{idQ}}" data-qid="{{idQ}}">
 	<h2 class="accordion-header" id="heading{{idQ}}">
-		<button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordion{{idQ}}" aria-expanded="true" aria-controls="accordion{{idQ}}">
+		<button type="button" class="accordion-button" data-bs-toggle="{{addCollapseEvent|default('collapse')}}" data-bs-target="#accordion{{idQ}}" aria-expanded="true" aria-controls="accordion{{idQ}}">
 			Element {{idQ}}
 		</button>
 	</h2>

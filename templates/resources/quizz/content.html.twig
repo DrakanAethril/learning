@@ -1,5 +1,5 @@
 <div class="row mb-3">
-    <div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordionQuizz">
         {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'1', showElem:'show'})}}
         {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'2', showElem:''})}}
         {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'3', showElem:''})}}
@@ -11,17 +11,30 @@
 </div>
 
 <div class="d-none" id="quizz_tpl_empty_q">
-    {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'%IDQ%', showElem:''})}}
+    {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'%IDQ%', showElem:'', addCollapseEvent: '%COLLAPSE%'})}}
 </div>
 <div class="d-none" id="quizz_tpl_empty_a">
-    {{ include('resources/quizz/tpl_answer.html.twig', {idQ:'%IDQ%', idR:'%IDR%', showElem:''})}}
+    {{ include('resources/quizz/tpl_answer.html.twig', {idQ:'%IDQ%', idR:'%IDR%', showElem:'', addCollapseEvent: '%COLLAPSE%'})}}
 </div>
 
 <script type="text/javascript">
 
  $(document).ready(function () {
-    $(".js-quizz-elem-add").click(function(e) {
-        alert( "Elem add." );
+    $('#quizz_tpl_empty_q').find('.accordion-collapse').removeClass('accordion-collapse').removeClass('collapse');
+    $('#quizz_tpl_empty_q').find('.accordion-item').removeClass('accordion-item');
+
+    $('body').on('click','.js-quizz-elem-add', function(e) {
+        let idQ = $('#accordionQuizz').find(".js-quizz-elem-main").last().data('qid');
+        if(isNaN(idQ)) {
+            idQ = 0;
+        }
+        let newIdQ = idQ + 1;
+        let contentE = $('#quizz_tpl_empty_q').html().replace(/%IDQ%/g, newIdQ+'');
+        $('#accordionQuizz').append(contentE);
+
+        $("#accordion"+newIdQ+'').addClass('accordion-collapse').addClass('collapse');
+        $("#quizz-elem"+newIdQ+'').addClass('accordion-item');
+
         e.stopPropagation();
         e.preventDefault();
     });
