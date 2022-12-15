@@ -44,6 +44,9 @@ class ResourcesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            var_dump($_POST);
+            exit;
+
             if(empty($resource->getDateCreate())) $resource->setDateCreate(new DateTime());
             if(empty($resource->getAuthor())) $resource->setAuthor($user);
             $resource->setContent([]);
@@ -59,6 +62,31 @@ class ResourcesController extends AbstractController
             'resourceForm' => $form->createView()
         ]);
     }
+
+    private function buildQuizzContentArray($post) : array {
+        $quizzContent = ['content' => [], 'error' => []];
+        if(!empty($_POST) && !empty($_POST['quizz_q_nb']) && is_int($_POST['quizz_q_nb'])) {
+            for($i=1; $i<=$_POST['quizz_q_nb']; $i++) {
+                // Question text
+                if( empty( $_POST['q_'.$i] ) ) { 
+                    $quizzContent['error'][] = 'Question '.$i.' needs a text';
+                } else {
+                    $quizzContent['content'][$i]['q'] = $_POST['q_'.$i];
+                }
+                
+                // Question explanation
+                if(!empty($_POST['q_'.$i.'_e'])) $quizzContent['content'][$i]['e'] = $_POST['q_'.$i.'_e'];
+                
+                //Questions answers
+                if(!empty($_POST['quizz_q_'.$i.'_a_nb']) && is_int($_POST['quizz_q_'.$i.'_a_nb'])) {
+
+                }
+            }
+        } else {
+            $quizzContent['error'][] = 'Invalid params provided';
+        }
+    
+        return $quizzContent;
+    }
+
 }
-
-

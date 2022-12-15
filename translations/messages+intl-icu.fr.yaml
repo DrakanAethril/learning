@@ -1,0 +1,44 @@
+platform:
+    name: __platform.name
+register:
+    title: __register.title
+    welcome: __register.welcome
+    signin_phrase: __register.signin_phrase
+    signup:
+        button: __register.signup.button
+    already:
+        text: __register.already.text
+    signin:
+        instead: __register.signin.instead
+form:
+    email:
+        label: __form.email.label
+    firstname:
+        label: __form.firstname.label
+    lastname:
+        label: __form.lastname.label
+    password:
+        label: __form.password.label
+    passwordrepeat:
+        label: __form.passwordrepeat.label
+    name:
+        label: __form.name.label
+    type:
+        label: __form.type.label
+    status:
+        label: __form.status.label
+login:
+    title: __login.title
+    welcome: __login.welcome
+    signin_phrase: __login.signin_phrase
+    email:
+        placeholder: __login.email.placeholder
+    forgot_password:
+        cta: __login.forgot_password.cta
+    signin:
+        button: __login.signin.button
+    new:
+        link: __login.new.link
+        create: __login.new.create
+remember:
+    me: __remember.me

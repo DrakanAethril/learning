@@ -19,6 +19,8 @@
             <div class="row js-quizz-answers" data-qid="{{idQ}}">
                 {{ include('resources/quizz/tpl_answer.html.twig', {idR: '1'})}}
                 {{ include('resources/quizz/tpl_answer.html.twig', {idR: '2'})}}
+
+				<input type="hidden" name="quizz_q_{{idQ}}_a_nb" id="quizz_q_{{idQ}}_a_nb" value="2"/>
             </div>
 
 			<div class="col-xl-12">
