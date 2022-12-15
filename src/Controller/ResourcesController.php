@@ -41,15 +41,21 @@ class ResourcesController extends AbstractController
         }
 
         $form = $this->createForm(ResourceFormType::class, $resource);
-        $form->handleRequest($request);
+        if(empty($_POST)) {
+            $resourceContent = $resource->getContent();
+            $contentErrors = [];
+        } else {
+            $submittedContent = $this->buildQuizzContentArray();
+            $resourceContent = $submittedContent['content'];
+            $contentErrors = $submittedContent['error'];
+        }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($_POST);
-            exit;
+        if ($form->isSubmitted() && $form->isValid() && empty($contentErrors)) {
+            
 
             if(empty($resource->getDateCreate())) $resource->setDateCreate(new DateTime());
             if(empty($resource->getAuthor())) $resource->setAuthor($user);
-            $resource->setContent([]);
+            $resource->setContent($resourceContent);
 
             $entityManager->persist($resource);
             $entityManager->flush();
@@ -59,17 +65,22 @@ class ResourcesController extends AbstractController
         }
         
         return $this->render('resources/create.html.twig', [
-            'resourceForm' => $form->createView()
+            'resourceForm' => $form->createView(),
+            'quizzContent' => $resourceContent,
+            'contentError' => $contentErrors
         ]);
     }
 
-    private function buildQuizzContentArray($post) : array {
+    private function buildQuizzContentArray() : array {
         $quizzContent = ['content' => [], 'error' => []];
-        if(!empty($_POST) && !empty($_POST['quizz_q_nb']) && is_int($_POST['quizz_q_nb'])) {
+        if(!empty($_POST) && !empty($_POST['quizz_q_nb']) && intval($_POST['quizz_q_nb']) > 0) {
+            $quizzContent['max_q_id'] = intval($_POST['quizz_q_nb']);
             for($i=1; $i<=$_POST['quizz_q_nb']; $i++) {
+                if(!isset($_POST['q_'.$i])) continue; //deleted question
+                
                 // Question text
                 if( empty( $_POST['q_'.$i] ) ) { 
-                    $quizzContent['error'][] = 'Question '.$i.' needs a text';
+                    $quizzContent['error'][] = 'Question of item '.$i.' needs a text';
                 } else {
                     $quizzContent['content'][$i]['q'] = $_POST['q_'.$i];
                 }
@@ -78,12 +89,31 @@ class ResourcesController extends AbstractController
                 if(!empty($_POST['q_'.$i.'_e'])) $quizzContent['content'][$i]['e'] = $_POST['q_'.$i.'_e'];
                 
                 //Questions answers
-                if(!empty($_POST['quizz_q_'.$i.'_a_nb']) && is_int($_POST['quizz_q_'.$i.'_a_nb'])) {
+                if(!empty($_POST['quizz_q_'.$i.'_a_nb']) && intval($_POST['quizz_q_'.$i.'_a_nb']) > 0) {
+                    if($_POST['quizz_q_'.$i.'_a_nb'] < 2) {
+                        $quizzContent['error'][] = 'Question '.$i.' needs at least 2 answers';
+                    }
+                    $quizzContent['content'][$i]['max_a_id'] = intval($_POST['quizz_q_'.$i.'_a_nb']);
+                    for($j=1; $j<=$_POST['quizz_q_'.$i.'_a_nb']; $j++) {
+                        if(!isset($_POST['q_'.$i.'_a_'.$j.'_t'])) continue; //deleted answer;
 
+                        if(empty($_POST['q_'.$i.'_a_'.$j.'_t'])) {
+                            $quizzContent['error'][] = 'All answers of item '.$i.' needs text';
+                        } else {
+                            $quizzContent['content'][$i]['a'][$j]['t'] = $_POST['q_'.$i.'_a_'.$j.'_t'];
+                        }
+                        if(!empty($_POST['q_'.$i.'_a_'.$j.'_v'])) $quizzContent['content'][$i]['a'][$j]['v'] = true;
+
+                    }
                 }
             }
         } else {
+            var_dump($_POST);
             $quizzContent['error'][] = 'Invalid params provided';
+        }
+
+        if(!empty($quizzContent['error'])) {
+            $quizzContent['error'] = array_unique($quizzContent['error']);
         }
     
         return $quizzContent;
