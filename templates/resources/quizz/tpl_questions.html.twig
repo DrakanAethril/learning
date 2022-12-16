@@ -9,7 +9,7 @@
 		<div class="accordion-body">
 			<div class="input-group mb-3">
 				<span class="input-group-text">Question</span>
-				<textarea class="form-control" name="q_{{idQ}}"></textarea>
+				<textarea class="form-control" name="q_{{idQ}}">{{question.q|default('')}}</textarea>
 			</div>
 
 			<div class="divider divider-info mb-3">
@@ -17,10 +17,16 @@
 			</div>
 
             <div class="row js-quizz-answers" data-qid="{{idQ}}">
-                {{ include('resources/quizz/tpl_answer.html.twig', {idR: '1'})}}
-                {{ include('resources/quizz/tpl_answer.html.twig', {idR: '2'})}}
-
-				<input type="hidden" name="quizz_q_{{idQ}}_a_nb" id="quizz_q_{{idQ}}_a_nb" value="2"/>
+				{% if question is empty or question.a is empty %}
+                	{{ include('resources/quizz/tpl_answer.html.twig', {idR: '1', answer:''})}}
+                	{{ include('resources/quizz/tpl_answer.html.twig', {idR: '2', answer:''})}}
+					<input type="hidden" name="quizz_q_{{idQ}}_a_nb" id="quizz_q_{{idQ}}_a_nb" value="{{question.max_a_id|default('2')}}"/>
+				{% else %}
+					{% for keyA, answerO in question.a %}
+						{{ include('resources/quizz/tpl_answer.html.twig', {idR: keyA, answer: answerO})}}
+					{% endfor %}
+					<input type="hidden" name="quizz_q_{{idQ}}_a_nb" id="quizz_q_{{idQ}}_a_nb" value="{{question.max_a_id}}"/>
+				{% endif %}
             </div>
 
 			<div class="col-xl-12">
@@ -34,7 +40,7 @@
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group-text">Explications</span>
-				<textarea class="form-control" name="q_{{idQ}}_e"></textarea>
+				<textarea class="form-control" name="q_{{idQ}}_e">{{question.e|default('')}}</textarea>
 			</div>
 
 			<div class="text-end col-xl-12 mt-3">

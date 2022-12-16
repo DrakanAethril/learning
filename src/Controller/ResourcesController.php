@@ -11,6 +11,7 @@ use App\Entity\Resource;
 use App\Repository\ResourceRepository;
 use App\Form\ResourceFormType;
 use DateTime;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/resources', name: 'resources_')]
 class ResourcesController extends AbstractController
@@ -25,7 +26,7 @@ class ResourcesController extends AbstractController
     }
 
     #[Route('/edit/{id<\d+>?0}', name: 'create')]
-    public function edit(int $id, Request $request, ResourceRepository $resourceRepo, EntityManagerInterface $entityManager): Response
+    public function edit(int $id, Request $request, ResourceRepository $resourceRepo, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         $user = $this->getUser();
         if(!empty($id)) {
@@ -41,21 +42,25 @@ class ResourcesController extends AbstractController
         }
 
         $form = $this->createForm(ResourceFormType::class, $resource);
+        $form->handleRequest($request);
+        
         if(empty($_POST)) {
             $resourceContent = $resource->getContent();
             $contentErrors = [];
         } else {
-            $submittedContent = $this->buildQuizzContentArray();
+            switch($resource->getType()) {
+                default:
+                    $submittedContent = $this->buildQuizzContentArray($translator);
+            }
             $resourceContent = $submittedContent['content'];
             $contentErrors = $submittedContent['error'];
+            $resource->setContent($resourceContent);
         }
 
         if ($form->isSubmitted() && $form->isValid() && empty($contentErrors)) {
-            
-
+                   
             if(empty($resource->getDateCreate())) $resource->setDateCreate(new DateTime());
             if(empty($resource->getAuthor())) $resource->setAuthor($user);
-            $resource->setContent($resourceContent);
 
             $entityManager->persist($resource);
             $entityManager->flush();
@@ -71,45 +76,45 @@ class ResourcesController extends AbstractController
         ]);
     }
 
-    private function buildQuizzContentArray() : array {
+    private function buildQuizzContentArray(TranslatorInterface $translator) : array {
         $quizzContent = ['content' => [], 'error' => []];
         if(!empty($_POST) && !empty($_POST['quizz_q_nb']) && intval($_POST['quizz_q_nb']) > 0) {
-            $quizzContent['max_q_id'] = intval($_POST['quizz_q_nb']);
+            $quizzContent['content']['max_q_id'] = intval($_POST['quizz_q_nb']);
             for($i=1; $i<=$_POST['quizz_q_nb']; $i++) {
                 if(!isset($_POST['q_'.$i])) continue; //deleted question
                 
                 // Question text
                 if( empty( $_POST['q_'.$i] ) ) { 
-                    $quizzContent['error'][] = 'Question of item '.$i.' needs a text';
+                    $quizzContent['error'][] = $translator->trans('Question of item %idQuizzQuestion% needs a text', ['%idQuizzQuestion%' => $i]);
                 } else {
-                    $quizzContent['content'][$i]['q'] = $_POST['q_'.$i];
+                    $quizzContent['content']['q'][$i]['q'] = $_POST['q_'.$i];
                 }
                 
                 // Question explanation
-                if(!empty($_POST['q_'.$i.'_e'])) $quizzContent['content'][$i]['e'] = $_POST['q_'.$i.'_e'];
+                if(!empty($_POST['q_'.$i.'_e'])) $quizzContent['content']['q'][$i]['e'] = $_POST['q_'.$i.'_e'];
                 
                 //Questions answers
                 if(!empty($_POST['quizz_q_'.$i.'_a_nb']) && intval($_POST['quizz_q_'.$i.'_a_nb']) > 0) {
                     if($_POST['quizz_q_'.$i.'_a_nb'] < 2) {
-                        $quizzContent['error'][] = 'Question '.$i.' needs at least 2 answers';
+                        $quizzContent['error'][] = $translator->trans('Question %idQuizzQuestion% needs at least 2 answers', ['%idQuizzQuestion%' => $i]);
                     }
-                    $quizzContent['content'][$i]['max_a_id'] = intval($_POST['quizz_q_'.$i.'_a_nb']);
+                    $quizzContent['content']['q'][$i]['max_a_id'] = intval($_POST['quizz_q_'.$i.'_a_nb']);
                     for($j=1; $j<=$_POST['quizz_q_'.$i.'_a_nb']; $j++) {
                         if(!isset($_POST['q_'.$i.'_a_'.$j.'_t'])) continue; //deleted answer;
 
                         if(empty($_POST['q_'.$i.'_a_'.$j.'_t'])) {
-                            $quizzContent['error'][] = 'All answers of item '.$i.' needs text';
+                            $quizzContent['error'][] = $translator->trans('All answers of item %idQuizzQuestion% needs text', ['%idQ%' => $i]);
                         } else {
-                            $quizzContent['content'][$i]['a'][$j]['t'] = $_POST['q_'.$i.'_a_'.$j.'_t'];
+                            $quizzContent['content']['q'][$i]['a'][$j]['t'] = $_POST['q_'.$i.'_a_'.$j.'_t'];
                         }
-                        if(!empty($_POST['q_'.$i.'_a_'.$j.'_v'])) $quizzContent['content'][$i]['a'][$j]['v'] = true;
+                        if(!empty($_POST['q_'.$i.'_a_'.$j.'_v'])) $quizzContent['content']['q'][$i]['a'][$j]['v'] = true;
 
                     }
                 }
             }
         } else {
             var_dump($_POST);
-            $quizzContent['error'][] = 'Invalid params provided';
+            $quizzContent['error'][] = $translator->trans('Invalid params provided');
         }
 
         if(!empty($quizzContent['error'])) {

@@ -1,8 +1,17 @@
 <div class="input-group mb-3 js-quizz-answer" data-aid="{{idR}}">
     <div class="input-group-text">
-        <input class="form-check-input mt-0 success" type="checkbox" value="good" aria-label="Checkbox for following text input" name="q_{{idQ}}_a_{{idR}}_v">
+        <input 
+            class="form-check-input mt-0 success" 
+            type="checkbox" 
+            value="good" 
+            aria-label="Checkbox for following text input" 
+            name="q_{{idQ}}_a_{{idR}}_v" 
+            {% if answer is not empty and answer.v is defined %}
+                checked="checked"
+            {% endif %}
+        >
     </div>
-    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="texte de la réponse" name="q_{{idQ}}_a_{{idR}}_t">
+    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="texte de la réponse" name="q_{{idQ}}_a_{{idR}}_t" value="{{answer.t|default('')}}">
     <div class="text-end m-2">
         <button type="button" class="btn btn-icon btn-danger js-quizz-answer-delete">
             <span class="tf-icons bx bx-trash"></span>

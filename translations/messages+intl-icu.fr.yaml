@@ -1,44 +1,45 @@
 platform:
-    name: __platform.name
+    name: Linotte
 register:
-    title: __register.title
-    welcome: __register.welcome
-    signin_phrase: __register.signin_phrase
+    title: inscription
+    welcome: Bienvenue !
+    signin_phrase: La création de compte est requise
     signup:
-        button: __register.signup.button
+        button: S'enregistrer
     already:
-        text: __register.already.text
+        text: Déjà inscrit ?
     signin:
-        instead: __register.signin.instead
+        instead: Se connecter
 form:
     email:
-        label: __form.email.label
+        label: email
     firstname:
-        label: __form.firstname.label
+        label: prénom
     lastname:
-        label: __form.lastname.label
+        label: nom
     password:
-        label: __form.password.label
+        label: mot de passe
     passwordrepeat:
-        label: __form.passwordrepeat.label
+        label: confirmation
     name:
-        label: __form.name.label
+        label: nom
     type:
-        label: __form.type.label
+        label: type
     status:
-        label: __form.status.label
+        label: statut
 login:
-    title: __login.title
-    welcome: __login.welcome
-    signin_phrase: __login.signin_phrase
+    title: S'identifier
+    welcome: Bienvenue
+    signin_phrase: Merci de vous connecter
     email:
-        placeholder: __login.email.placeholder
+        placeholder: email
     forgot_password:
-        cta: __login.forgot_password.cta
+        cta: mot de passe oublié ?
     signin:
-        button: __login.signin.button
+        button: Se connecter
     new:
-        link: __login.new.link
-        create: __login.new.create
+        link: Vous êtes nouveau ?
+        create:  Créer un compte
 remember:
-    me: __remember.me
+    me: Se souvenir de moi
+'Invalid params provided': '__Invalid params provided'
