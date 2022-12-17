@@ -113,7 +113,6 @@ class ResourcesController extends AbstractController
                 }
             }
         } else {
-            var_dump($_POST);
             $quizzContent['error'][] = $translator->trans('Invalid params provided');
         }
 
