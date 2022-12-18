@@ -40,7 +40,9 @@
             <div class="layout-container">
                 {{ include('includes/menu.html.twig') }}
                 <div class="layout-page">
-                    {{ include('includes/navbar.html.twig') }}
+                    {% if app.user is not empty  %}
+                        {{ include('includes/navbar.html.twig') }}
+                    {% endif %}
                     <!-- Content wrapper -->
                     <div class="content-wrapper">
                         <!-- Content -->

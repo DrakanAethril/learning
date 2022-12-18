@@ -9,10 +9,26 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/me', name: 'account_')]
 class AccountController extends AbstractController
 {
-    #[Route('/', name: 'account_infos')]
+    #[Route('/', name: 'infos')]
     public function index(): Response
     {
         return $this->render('account/infos.html.twig', [
+            'controller_name' => 'AccountController',
+        ]);
+    }
+
+    #[Route('/security', name: 'security')]
+    public function security(): Response
+    {
+        return $this->render('account/security.html.twig', [
+            'controller_name' => 'AccountController',
+        ]);
+    }
+
+    #[Route('/removal', name: 'removal')]
+    public function removal(): Response
+    {
+        return $this->render('account/removal.html.twig', [
             'controller_name' => 'AccountController',
         ]);
     }
