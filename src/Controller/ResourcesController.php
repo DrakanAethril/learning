@@ -87,27 +87,27 @@ class ResourcesController extends AbstractController
                 if( empty( $_POST['q_'.$i] ) ) { 
                     $quizzContent['error'][] = $translator->trans('Question of item %idQuizzQuestion% needs a text', ['%idQuizzQuestion%' => $i]);
                 } else {
-                    $quizzContent['content']['q'][$i]['q'] = $_POST['q_'.$i];
+                    $quizzContent['content']['q']['q'.$i]['q'] = $_POST['q_'.$i];
                 }
                 
                 // Question explanation
-                if(!empty($_POST['q_'.$i.'_e'])) $quizzContent['content']['q'][$i]['e'] = $_POST['q_'.$i.'_e'];
+                if(!empty($_POST['q_'.$i.'_e'])) $quizzContent['content']['q']['q'.$i]['e'] = $_POST['q_'.$i.'_e'];
                 
                 //Questions answers
                 if(!empty($_POST['quizz_q_'.$i.'_a_nb']) && intval($_POST['quizz_q_'.$i.'_a_nb']) > 0) {
                     if($_POST['quizz_q_'.$i.'_a_nb'] < 2) {
                         $quizzContent['error'][] = $translator->trans('Question %idQuizzQuestion% needs at least 2 answers', ['%idQuizzQuestion%' => $i]);
                     }
-                    $quizzContent['content']['q'][$i]['max_a_id'] = intval($_POST['quizz_q_'.$i.'_a_nb']);
+                    $quizzContent['content']['q']['q'.$i]['max_a_id'] = intval($_POST['quizz_q_'.$i.'_a_nb']);
                     for($j=1; $j<=$_POST['quizz_q_'.$i.'_a_nb']; $j++) {
                         if(!isset($_POST['q_'.$i.'_a_'.$j.'_t'])) continue; //deleted answer;
 
                         if(empty($_POST['q_'.$i.'_a_'.$j.'_t'])) {
                             $quizzContent['error'][] = $translator->trans('All answers of item %idQuizzQuestion% needs text', ['%idQ%' => $i]);
                         } else {
-                            $quizzContent['content']['q'][$i]['a'][$j]['t'] = $_POST['q_'.$i.'_a_'.$j.'_t'];
+                            $quizzContent['content']['q']['q'.$i]['a'][$j]['t'] = $_POST['q_'.$i.'_a_'.$j.'_t'];
                         }
-                        if(!empty($_POST['q_'.$i.'_a_'.$j.'_v'])) $quizzContent['content']['q'][$i]['a'][$j]['v'] = true;
+                        if(!empty($_POST['q_'.$i.'_a_'.$j.'_v'])) $quizzContent['content']['q']['q'.$i]['a'][$j]['v'] = true;
 
                     }
                 }
