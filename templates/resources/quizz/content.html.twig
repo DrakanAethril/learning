@@ -12,7 +12,8 @@
         {% else %}
             {% for keyQ, question in quizzContent.q %}
                 {% set key = keyQ|replace({'q': ''}) %}
-                {{ include('resources/quizz/tpl_questions.html.twig', {idQ: key, showElem:'show', question: question })}}
+                {% set showElem = ( qCount == 1 ? 'show' : '' ) %}
+                {{ include('resources/quizz/tpl_questions.html.twig', {idQ: key, showElem: showElem, question: question })}}
                 {% set qCount = qCount + 1 %}
             {% endfor %}
             <input type="hidden" name="quizz_q_nb" id="quizz_q_nb" value="{{quizzContent.max_q_id}}"/>

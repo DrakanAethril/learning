@@ -1,16 +1,16 @@
 <ul class="nav nav-pills flex-column flex-md-row mb-3">
 	<li class="nav-item">
-		<a class="nav-link active" href="{{ path('account_infos')}}">
+		<a class="nav-link {{ accountTab == 'infos' ? 'active' : '' }}" href="{{ path('account_infos')}}">
 			<i class="bx bx-user me-1"></i>
 			Informations</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{{ path('account_security')}}">
+		<a class="nav-link {{ accountTab == 'security' ? 'active' : '' }}" href="{{ path('account_security')}}">
 			<i class="bx bx-lock me-1"></i>
 			Security</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{{ path('account_removal')}}">
+		<a class="nav-link {{ accountTab == 'removal' ? 'active' : '' }}" href="{{ path('account_removal')}}">
 			<i class="bx bx-trash-alt me-1"></i>
 			Removal</a>
 	</li>

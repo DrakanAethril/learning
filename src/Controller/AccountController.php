@@ -14,6 +14,7 @@ class AccountController extends AbstractController
     {
         return $this->render('account/infos.html.twig', [
             'controller_name' => 'AccountController',
+            'accountTab' => 'infos'
         ]);
     }
 
@@ -22,6 +23,7 @@ class AccountController extends AbstractController
     {
         return $this->render('account/security.html.twig', [
             'controller_name' => 'AccountController',
+            'accountTab' => 'security'
         ]);
     }
 
@@ -30,6 +32,7 @@ class AccountController extends AbstractController
     {
         return $this->render('account/removal.html.twig', [
             'controller_name' => 'AccountController',
+            'accountTab' => 'removal'
         ]);
     }
 }
