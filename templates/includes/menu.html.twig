@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-    <a href="index.html" class="app-brand-link">
+    <a href="{{ path('lms_index')}}" class="app-brand-link">
         <span class="app-brand-logo demo">
         <svg
             width="25"
@@ -56,7 +56,7 @@
             </g>
         </svg>
         </span>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+        <span class="app-brand-text demo menu-text fw-bolder ms-2">{{'platform.name'|trans}}</span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -71,207 +71,117 @@
     <li class="menu-item active">
         <a href="index.html" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">Dashboard</div>
+        <div data-i18n="Analytics">{{'menu.dashboard'|trans}}</div>
         </a>
     </li>
-
-    <!-- Layouts -->
-    <!--<li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-layout"></i>
-        <div data-i18n="Layouts">Layouts</div>
-        </a>
-
-        <ul class="menu-sub">
-        <li class="menu-item">
-            <a href="layouts-without-menu.html" class="menu-link">
-            <div data-i18n="Without menu">Without menu</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="layouts-without-navbar.html" class="menu-link">
-            <div data-i18n="Without navbar">Without navbar</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="layouts-container.html" class="menu-link">
-            <div data-i18n="Container">Container</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="layouts-fluid.html" class="menu-link">
-            <div data-i18n="Fluid">Fluid</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="layouts-blank.html" class="menu-link">
-            <div data-i18n="Blank">Blank</div>
-            </a>
-        </li>
-        </ul>
-    </li>-->
 
     <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Study zone</span>
+        <span class="menu-header-text">{{'menu.studyzone'|trans}}</span>
     </li>
     <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-collection"></i>
-        <div data-i18n="Basic">Classes</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-collection"></i>
-        <div data-i18n="Basic">Evaluations</div>
+        <i class="menu-icon tf-icons bx bx-chalkboard"></i>
+        <div data-i18n="Basic">{{'menu.classes'|trans}}</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-collection"></i>
-        <div data-i18n="Basic">Trainings</div>
+        <i class="menu-icon tf-icons bx bxs-graduation"></i>
+        <div data-i18n="Basic">{{'menu.evals'|trans}}</div>
         </a>
-    </li>
-    <!--<li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-        <div data-i18n="Authentications">Training zone</div>
-        </a>
-        <ul class="menu-sub">
-        <li class="menu-item">
-            <a href="auth-login-basic.html" class="menu-link" target="_blank">
-            <div data-i18n="Basic">Trainings</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="auth-register-basic.html" class="menu-link" target="_blank">
-            <div data-i18n="Basic">Register</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
-            <div data-i18n="Basic">Forgot Password</div>
-            </a>
-        </li>
-        </ul>
     </li>
     <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-        <div data-i18n="Misc">Misc</div>
-        </a>
-        <ul class="menu-sub">
-        <li class="menu-item">
-            <a href="pages-misc-error.html" class="menu-link">
-            <div data-i18n="Error">Error</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="pages-misc-under-maintenance.html" class="menu-link">
-            <div data-i18n="Under Maintenance">Under Maintenance</div>
-            </a>
-        </li>
-        </ul>
-    </li>-->
-    <!-- Components -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Tools</span></li>
-    <!-- Cards -->
-    <!--<li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-collection"></i>
-        <div data-i18n="Basic">Cards</div>
+        <i class="menu-icon tf-icons bx bx-run"></i>
+        <div data-i18n="Basic">{{'menu.trainings'|trans}}</div>
         </a>
-    </li>-->
-    <!-- User interface -->
+    </li>
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">{{'menu.tools'|trans}}</span></li>
     <li class="menu-item">
         <a href="javascript:void(0)" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-box"></i>
-        <div data-i18n="User interface">Sandboxes</div>
+        <i class="menu-icon tf-icons bx bx-traffic-cone"></i>
+        <div data-i18n="User interface">{{'menu.sandboxes'|trans}}</div>
         </a>
         <ul class="menu-sub">
         <li class="menu-item">
             <a href="ui-accordion.html" class="menu-link">
-            <div data-i18n="Accordion">HTML</div>
+            <div data-i18n="Accordion">{{'menu.html'|trans}}</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="ui-alerts.html" class="menu-link">
-            <div data-i18n="Alerts">HTML + CSS</div>
+            <div data-i18n="Alerts">{{'menu.html-css'|trans}}</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="ui-badges.html" class="menu-link">
-            <div data-i18n="Badges">JS</div>
+            <div data-i18n="Badges">{{'menu.javascript'|trans}}</div>
             </a>
         </li>
         </ul>
     </li>
-
-    <!-- Extended components -->
     <li class="menu-item">
         <a href="javascript:void(0)" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-copy"></i>
-        <div data-i18n="Extended UI">Docs</div>
+        <i class="menu-icon tf-icons bx bx-book-heart"></i>
+        <div data-i18n="Extended UI">{{'menu.docs'|trans}}</div>
         </a>
         <ul class="menu-sub">
         <li class="menu-item">
             <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
-            <div data-i18n="Perfect Scrollbar">Languages</div>
+            <div data-i18n="Perfect Scrollbar">{{'menu.languages'|trans}}</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="extended-ui-text-divider.html" class="menu-link">
-            <div data-i18n="Text Divider">Databases</div>
+            <div data-i18n="Text Divider">{{'menu.databases'|trans}}</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="extended-ui-text-divider.html" class="menu-link">
-            <div data-i18n="Text Divider">Tech tools</div>
+            <div data-i18n="Text Divider">{{'menu.techtools'|trans}}</div>
             </a>
         </li>
         </ul>
     </li>
-
-    <!-- Forms & Tables -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Certifications</span></li>
-    <!-- Tables -->
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">{{'menu.certifications'|trans}}</span></li>
     <li class="menu-item">
         <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-table"></i>
-        <div data-i18n="Tables">Pix</div>
+        <i class="menu-icon tf-icons bx bx-link-external"></i>
+        <div data-i18n="Tables">{{'menu.pix'|trans}}</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-table"></i>
-        <div data-i18n="Tables">CNIL - RGPD</div>
+        <i class="menu-icon tf-icons bx bx-link-external"></i>
+        <div data-i18n="Tables">{{'menu.cnil-rgpd'|trans}}</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-table"></i>
-        <div data-i18n="Tables">ANSSI - Cybersecurity</div>
+        <i class="menu-icon tf-icons bx bx-link-external"></i>
+        <div data-i18n="Tables">{{'menu.anssi-cybersec'|trans}}</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-table"></i>
-        <div data-i18n="Tables">AWS - Educate</div>
+        <i class="menu-icon tf-icons bx bxl-aws"></i>
+        <div data-i18n="Tables">{{'menu.aws-educate'|trans}}</div>
         </a>
     </li>
-    <!-- Misc -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Resources</span></li>
-    <li class="menu-item">
-        <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-table"></i>
-        <div data-i18n="Tables">Mine</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-table"></i>
-        <div data-i18n="Tables">Create</div>
-        </a>
-    </li>
+    {% if is_granted('ROLE_TEACHER')  %}
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">{{'menu.resources'|trans}}</span></li>
+        <li class="menu-item">
+            <a href="{{ path('resources_mine') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+            <div data-i18n="Tables">{{'menu.my-resources'|trans}}</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ path('resources_create', {id:0}) }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-duplicate"></i>
+            <div data-i18n="Tables">{{'menu.new-resources'|trans}}</div>
+            </a>
+        </li>
+    {% endif %}
     </ul>
 </aside>

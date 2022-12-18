@@ -6288,12 +6288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "f934cb9bcf671a9b4cf631f23bf33647030eab46"
+                "reference": "a1bfa007ffb16ca2f35eb9c8cd6ca66e94df0b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/f934cb9bcf671a9b4cf631f23bf33647030eab46",
-                "reference": "f934cb9bcf671a9b4cf631f23bf33647030eab46",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/a1bfa007ffb16ca2f35eb9c8cd6ca66e94df0b5b",
+                "reference": "a1bfa007ffb16ca2f35eb9c8cd6ca66e94df0b5b",
                 "shasum": ""
             },
             "require": {
@@ -6380,7 +6380,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-16T13:20:57+00:00"
+            "time": "2022-12-18T10:02:33+00:00"
         },
         {
             "name": "symfony/security-core",
