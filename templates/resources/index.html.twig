@@ -55,7 +55,8 @@
 									<span class="badge bg-label-primary me-1">{{ resource.status.name }}</span>
 								</td>
 								<td>
-									<div class="dropdown">
+                                    <a href="{{ path('resources_create', {id: resource.id}) }}" class="btn btn-icon btn-outline-primary rounded-pill bx bx-edit-alt me-1"></a>
+									<!--<div class="dropdown">
 										<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
 											<i class="bx bx-dots-vertical-rounded"></i>
 										</button>
@@ -67,7 +68,7 @@
 												<i class="bx bx-trash me-1"></i>
 												Delete</a>
 										</div>
-									</div>
+									</div>-->
 								</td>
 							</tr>
 						{% endfor %}
