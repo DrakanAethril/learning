@@ -4,6 +4,9 @@
 			<i class="bx bx-user me-1"></i>
 			Informations</a>
 	</li>
+	{% if is_granted('ROLE_STUDENT') %}
+
+	{% endif %}
 	<li class="nav-item">
 		<a class="nav-link {{ accountTab == 'security' ? 'active' : '' }}" href="{{ path('account_security')}}">
 			<i class="bx bx-lock me-1"></i>

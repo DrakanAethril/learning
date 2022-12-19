@@ -81,92 +81,44 @@
     <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
         <i class="menu-icon tf-icons bx bx-chalkboard"></i>
-        <div data-i18n="Basic">{{'menu.classes'|trans}}</div>
+        <div data-i18n="Basic">{{'menu.classrooms'|trans}}</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-graduation"></i>
+        <i class="menu-icon tf-icons bx bx-list-check"></i>
         <div data-i18n="Basic">{{'menu.evals'|trans}}</div>
         </a>
     </li>
     <li class="menu-item">
         <a href="cards-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-run"></i>
+        <i class="menu-icon tf-icons bx bx-cycling"></i>
         <div data-i18n="Basic">{{'menu.trainings'|trans}}</div>
         </a>
     </li>
     <li class="menu-header small text-uppercase"><span class="menu-header-text">{{'menu.tools'|trans}}</span></li>
     <li class="menu-item">
         <a href="javascript:void(0)" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-traffic-cone"></i>
-        <div data-i18n="User interface">{{'menu.sandboxes'|trans}}</div>
+        <i class="menu-icon tf-icons bx bx-code-block"></i>
+        <div data-i18n="User interface">{{'menu.cs'|trans}}</div>
         </a>
         <ul class="menu-sub">
         <li class="menu-item">
             <a href="ui-accordion.html" class="menu-link">
-            <div data-i18n="Accordion">{{'menu.html'|trans}}</div>
+            <div data-i18n="Accordion">{{'menu.cs-docs'|trans}}</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="ui-alerts.html" class="menu-link">
-            <div data-i18n="Alerts">{{'menu.html-css'|trans}}</div>
+            <div data-i18n="Alerts">{{'menu.cs-certifications'|trans}}</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="ui-badges.html" class="menu-link">
-            <div data-i18n="Badges">{{'menu.javascript'|trans}}</div>
+            <div data-i18n="Badges">{{'menu.cs-sandboxes'|trans}}</div>
             </a>
         </li>
         </ul>
-    </li>
-    <li class="menu-item">
-        <a href="javascript:void(0)" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-book-heart"></i>
-        <div data-i18n="Extended UI">{{'menu.docs'|trans}}</div>
-        </a>
-        <ul class="menu-sub">
-        <li class="menu-item">
-            <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
-            <div data-i18n="Perfect Scrollbar">{{'menu.languages'|trans}}</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="extended-ui-text-divider.html" class="menu-link">
-            <div data-i18n="Text Divider">{{'menu.databases'|trans}}</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="extended-ui-text-divider.html" class="menu-link">
-            <div data-i18n="Text Divider">{{'menu.techtools'|trans}}</div>
-            </a>
-        </li>
-        </ul>
-    </li>
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">{{'menu.certifications'|trans}}</span></li>
-    <li class="menu-item">
-        <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-link-external"></i>
-        <div data-i18n="Tables">{{'menu.pix'|trans}}</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-link-external"></i>
-        <div data-i18n="Tables">{{'menu.cnil-rgpd'|trans}}</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-link-external"></i>
-        <div data-i18n="Tables">{{'menu.anssi-cybersec'|trans}}</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="tables-basic.html" class="menu-link">
-        <i class="menu-icon tf-icons bx bxl-aws"></i>
-        <div data-i18n="Tables">{{'menu.aws-educate'|trans}}</div>
-        </a>
     </li>
     {% if is_granted('ROLE_TEACHER')  %}
         <li class="menu-header small text-uppercase"><span class="menu-header-text">{{'menu.resources'|trans}}</span></li>

@@ -6291,12 +6291,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "241b6b887d66cf8be62f78d2ad23014411ddafb9"
+                "reference": "70d2313a59515351cf80f17a5285027d7e5ba0fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/241b6b887d66cf8be62f78d2ad23014411ddafb9",
-                "reference": "241b6b887d66cf8be62f78d2ad23014411ddafb9",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/70d2313a59515351cf80f17a5285027d7e5ba0fd",
+                "reference": "70d2313a59515351cf80f17a5285027d7e5ba0fd",
                 "shasum": ""
             },
             "require": {
@@ -6383,7 +6383,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-18T14:14:00+00:00"
+            "time": "2022-12-19T07:35:07+00:00"
         },
         {
             "name": "symfony/security-core",
@@ -10379,12 +10379,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/web-profiler-bundle.git",
-                "reference": "c398019015333fa85259d1ccab695f494e8a9c22"
+                "reference": "ddbb0d2b6b9aa77fc9836080940823cf4204b350"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/c398019015333fa85259d1ccab695f494e8a9c22",
-                "reference": "c398019015333fa85259d1ccab695f494e8a9c22",
+                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/ddbb0d2b6b9aa77fc9836080940823cf4204b350",
+                "reference": "ddbb0d2b6b9aa77fc9836080940823cf4204b350",
                 "shasum": ""
             },
             "require": {
@@ -10449,7 +10449,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-16T13:20:57+00:00"
+            "time": "2022-12-19T07:35:07+00:00"
         },
         {
             "name": "theseer/tokenizer",

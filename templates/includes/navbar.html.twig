@@ -17,6 +17,11 @@
             aria-label="Search..."
             />
         </div>-->
+            <div class="nav-item d-flex align-items-center">
+                <blockquote class="blockquote m-0 mt-1">
+                    <p class="mb-0"><q>{{ randomQuote.text}}</q> <span class="blockquote-footer"><cite title="Source Title">{{ randomQuote.author }}</cite></span></p>
+                </blockquote>
+            </div>
         </div>
         <!-- /Search -->
 
@@ -38,7 +43,10 @@
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
             <div class="avatar avatar-online">
-                <img src="{{asset('assets/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
+                <!--<img src="{{asset('assets/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />-->
+                <button type="button" class="btn rounded-pill btn-icon btn-primary">
+                    <span class="tf-icons bx bx-user"></span>
+                </button>
             </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -47,7 +55,9 @@
                 <div class="d-flex">
                     <div class="flex-shrink-0 me-3">
                     <div class="avatar avatar-online">
-                        <img src="{{asset('assets/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
+                        <button type="button" class="btn rounded-pill btn-icon btn-primary">
+                            <span class="tf-icons bx bx-user"></span>
+                        </button>
                     </div>
                     </div>
                     <div class="flex-grow-1">
