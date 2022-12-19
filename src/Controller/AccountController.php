@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ChangePasswordFormType;
+use App\Form\UserInfoUpdateFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,11 +15,33 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccountController extends AbstractController
 {
     #[Route('/', name: 'infos')]
-    public function index(): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        $form = $this->createForm(UserInfoUpdateFormType::class, $user);
+        $form->handleRequest($request);
+
+        $submittedToken = $request->request->get('_csrf_token');
+        $validToken = false;
+        $errors = [];
+        $success = false;
+        if($form->isSubmitted()) {
+            if ($this->isCsrfTokenValid('user_upd_infos', $submittedToken)) {
+                $validToken = true;
+            }
+            if($form->isValid() && $validToken) {
+                $entityManager->persist($user);
+                $entityManager->flush();
+                $success = true;
+            } else {
+                $errors = $form->getErrors(true);
+            }
+        }
         return $this->render('account/infos.html.twig', [
-            'controller_name' => 'AccountController',
-            'accountTab' => 'infos'
+            'userUpdateInfosForm' => $form->createView(),
+            'accountTab' => 'infos',
+            'formErrors' => $errors,
+            'formSuccess' => $success
         ]);
     }
 
@@ -26,7 +49,6 @@ class AccountController extends AbstractController
     public function structure(): Response
     {
         return $this->render('account/structure.html.twig', [
-            'controller_name' => 'AccountController',
             'accountTab' => 'structure'
         ]);
     }
@@ -63,7 +85,6 @@ class AccountController extends AbstractController
         }
        
         return $this->render('account/security.html.twig', [
-            'controller_name' => 'AccountController',
             'changePasswordForm' => $form->createView(),
             'accountTab' => 'security',
             'formErrors' => $errors,
@@ -75,7 +96,6 @@ class AccountController extends AbstractController
     public function removal(): Response
     {
         return $this->render('account/removal.html.twig', [
-            'controller_name' => 'AccountController',
             'accountTab' => 'removal'
         ]);
     }

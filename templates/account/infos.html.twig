@@ -1,19 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Account Infos!
-{% endblock %}
+{% block title %}{{'platform.name'|trans}} - {{'title.section-account'|trans}}{% endblock %}
 
 {% block body %}
 	<h4 class="fw-bold py-3 mb-4">
-		<span class="text-muted fw-light">Account Settings /</span>
-		Informations
+		<span class="text-muted fw-light">{{'breadcrumb.account-settings'|trans}} /</span>{{'breadcrumb.account.infos'|trans}}
 	</h4>
 
 	<div class="row">
 		<div class="col-md-12">
 			{% include('account/tabs.html.twig') %}
 			<div class="card mb-4">
-				<h5 class="card-header">Profile Details</h5>
+				<h5 class="card-header">{{'account.informations'|trans}}</h5>
 				<!-- Account -->
 				<!--<div class="card-body">
 					<div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -35,19 +33,53 @@
 				</div>
 				<hr class="my-0"/>-->
 				<div class="card-body">
-					<form id="formAccountSettings" method="POST" onsubmit="return false">
+				{{ form_start(userUpdateInfosForm) }}
 						<div class="row">
-							<div class="mb-3 col-md-6">
-								<label for="firstName" class="form-label">First Name</label>
-								<input class="form-control" type="text" id="firstName" name="firstName" value="{{app.user.firstname}}" autofocus/>
+							{% if formErrors is not empty %}
+								{% if formErrors|length %}
+									<div class="alert alert-warning" role="alert">
+										<ul>
+											{% for error in formErrors %}
+												<li>{{ error.message }}</li>
+											{% endfor %}
+										</ul>
+									</div>
+								{% endif %}
+							{% endif %}
+							{% if formSuccess is not empty %}
+								<div class="alert alert-success" role="alert">
+									{{'form.success.generic'|trans}}
+								</div>
+							{% endif %}
+							<div class="mb-3 col-md-6 form-password-toggle">
+								<label class="form-label" for="password">{{'form.firstname.label'|trans}}</label>
+								<div class="input-group input-group-merge">
+									{{ form_widget(userUpdateInfosForm.firstname, {
+										label: false,
+										attr: {
+											class: 'form-control',
+											value: app.user.firstname
+										},
+										id: "firstname"
+									}) }}
+								</div>
 							</div>
-							<div class="mb-3 col-md-6">
-								<label for="lastName" class="form-label">Last Name</label>
-								<input class="form-control" type="text" name="lastName" id="lastName" value="{{app.user.lastname}}"/>
+							<div class="mb-3 col-md-6 form-password-toggle">
+								<label class="form-label" for="password">{{'form.lastname.label'|trans}}</label>
+								<div class="input-group input-group-merge">
+									{{ form_widget(userUpdateInfosForm.lastname, {
+										label: false,
+										attr: {
+											class: 'form-control',
+											value: app.user.lastname
+										},
+										id: "lastname"
+									}) }}
+								</div>
 							</div>
 							<div class="mb-3 col-md-6">
 								<label for="email" class="form-label">E-mail</label>
-								<input class="form-control" type="text" id="email" name="email" value="{{app.user.email}}"/>
+								<input class="form-control" type="text" id="email" value="{{app.user.email}}" disabled="disabled"/>
 							</div>
 							<!--<div class="mb-3 col-md-6">
 															<label for="language" class="form-label">Language</label>
@@ -60,10 +92,9 @@
 															</select>
 														</div>-->
 						</div>
-						<div class="mt-2">
-							<button type="submit" class="btn btn-primary me-2">Save changes</button>
-						</div>
-					</form>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('user_upd_infos') }}">
+						<input type="submit" class="btn btn-primary" value="{{'form.upd-infos-btn'|trans}}">
+					{{ form_end(userUpdateInfosForm) }}
 				</div>
 				<!-- /Account -->
 			</div>
