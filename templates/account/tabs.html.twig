@@ -2,23 +2,23 @@
 	<li class="nav-item">
 		<a class="nav-link {{ accountTab == 'infos' ? 'active' : '' }}" href="{{ path('account_infos')}}">
 			<i class="bx bx-user me-1"></i>
-			Informations</a>
+			{{'account.tab-informations'|trans}}</a>
 	</li>
 	{% if is_granted('ROLE_STUDENT') %}
 		<li class="nav-item">
 			<a class="nav-link {{ accountTab == 'structure' ? 'active' : '' }}" href="{{ path('account_structure')}}">
 				<i class="bx bxs-school me-1"></i>
-				Structure</a>
+				{{'account.tab-structure'|trans}}</a>
 		</li>
 	{% endif %}
 	<li class="nav-item">
 		<a class="nav-link {{ accountTab == 'security' ? 'active' : '' }}" href="{{ path('account_security')}}">
 			<i class="bx bx-lock me-1"></i>
-			Security</a>
+			{{'account.tab-security'|trans}}</a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link {{ accountTab == 'removal' ? 'active' : '' }}" href="{{ path('account_removal')}}">
 			<i class="bx bx-trash-alt me-1"></i>
-			Removal</a>
+			{{'account.tab-removal'|trans}}</a>
 	</li>
 </ul>

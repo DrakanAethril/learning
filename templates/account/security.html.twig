@@ -5,14 +5,14 @@
 
 {% block body %}
 	<h4 class="fw-bold py-3 mb-4">
-		<span class="text-muted fw-light">Account Settings /</span>
-		Security</h4>
+		<span class="text-muted fw-light">{{'breadcrumb.account-settings'|trans}} /</span>
+		{{'breadcrumb.account.security'|trans}}</h4>
 
 	<div class="row">
 		<div class="col-md-12">
 			{% include('account/tabs.html.twig') %}
 			<div class="card">
-				<h5 class="card-header">Delete Account</h5>
+				<h5 class="card-header">{{'account.change-password'|trans}}</h5>
 				<div class="card-body">
 					{{ form_start(changePasswordForm) }}
 						<div class="row">
@@ -26,6 +26,11 @@
 										</ul>
 									</div>
 								{% endif %}
+							{% endif %}
+							{% if formSuccess is not empty %}
+								<div class="alert alert-success" role="alert">
+									{{'form.success.generic'|trans}}
+								</div>
 							{% endif %}
 							<div class="mb-3 col-md-6 form-password-toggle">
 								<label class="form-label" for="password">{{'form.password.label'|trans}}</label>
@@ -61,7 +66,7 @@
 							</div>
 						</div>
 						<input type="hidden" name="_csrf_token" value="{{ csrf_token('change_pwd') }}">
-						<input type="submit" class="btn btn-warning text-end" value="Change Password">
+						<input type="submit" class="btn btn-warning text-end" value="{{'form.change-password-btn'|trans}}">
 					{{ form_end(changePasswordForm) }}
 				</div>
 			</div>

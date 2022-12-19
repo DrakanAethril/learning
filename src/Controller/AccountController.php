@@ -41,6 +41,7 @@ class AccountController extends AbstractController
         $submittedToken = $request->request->get('_csrf_token');
         $validToken = false;
         $errors = [];
+        $success = false;
         if($form->isSubmitted()) {
             if ($this->isCsrfTokenValid('change_pwd', $submittedToken)) {
                 $validToken = true;
@@ -53,9 +54,9 @@ class AccountController extends AbstractController
                         $form->get('plainPassword')->getData()
                     )
                 );
-
                 $entityManager->persist($user);
                 $entityManager->flush();
+                $success = true;
             } else {
                 $errors = $form->getErrors(true);
             }
@@ -65,7 +66,8 @@ class AccountController extends AbstractController
             'controller_name' => 'AccountController',
             'changePasswordForm' => $form->createView(),
             'accountTab' => 'security',
-            'formErrors' => $errors
+            'formErrors' => $errors,
+            'formSuccess' => $success
         ]);
     }
 
