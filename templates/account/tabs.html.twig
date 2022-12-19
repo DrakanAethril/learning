@@ -5,7 +5,11 @@
 			Informations</a>
 	</li>
 	{% if is_granted('ROLE_STUDENT') %}
-
+		<li class="nav-item">
+			<a class="nav-link {{ accountTab == 'structure' ? 'active' : '' }}" href="{{ path('account_structure')}}">
+				<i class="bx bxs-school me-1"></i>
+				Structure</a>
+		</li>
 	{% endif %}
 	<li class="nav-item">
 		<a class="nav-link {{ accountTab == 'security' ? 'active' : '' }}" href="{{ path('account_security')}}">
