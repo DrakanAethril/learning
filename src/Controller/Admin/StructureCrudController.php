@@ -20,8 +20,9 @@ class StructureCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new( 'name' );
+        yield TextField::new( 'registerKey' );
         yield BooleanField::new( 'active' );
-         yield AssociationField::new('cohorts')
+        yield AssociationField::new('cohorts')
             ->setFormTypeOption('by_reference', false)
             ->autocomplete();
     }

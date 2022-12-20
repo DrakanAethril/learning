@@ -44,6 +44,15 @@
             }
         }) }}
 	</div>
+	<div class="mb-3">
+		<label for="registerKey" class="form-label">{{'form.registerKey.label'|trans}}</label>
+		{{ form_row(registrationForm.registerKey, {
+            label: false,
+            attr: {
+                class: 'form-control'
+            }
+        }) }}
+	</div>
 	<div class="mb-3 form-password-toggle">
 		<label class="form-label" for="password">{{'form.password.label'|trans}}</label>
 		<div class="input-group input-group-merge">
