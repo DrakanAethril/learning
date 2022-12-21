@@ -16,6 +16,26 @@
 	<h4 class="mb-2">{{'register.welcome'|trans}}</h4>
 	<p class="mb-4">{{'register.signin_phrase'|trans}}</p>
 
+	{% if formErrors is not empty %}
+		{% if formErrors|length %}
+			<div class="alert alert-warning" role="alert">
+				<ul>
+					{% for error in formErrors %}
+						<li>{{ error.message }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	{% endif %}
+	{% if errorStructureKey is not empty %}
+		{% if errorStructureKey|length %}
+			<div class="alert alert-warning" role="alert">
+				<ul>
+					<li>{{ errorStructureKey }}</li>
+				</ul>
+			</div>
+		{% endif %}
+	{% endif %}
 	{{ form_start(registrationForm) }}
 	<div class="mb-3">
 		<label for="email" class="form-label">{{'form.email.label'|trans}}</label>

@@ -21,16 +21,20 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager, StructureRepository $structureRepo): Response
     {
         $user = new User();
+        $errors = [];
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-        $errorStructureKey = true;
+        $errorStructureKey = '';
         $validStructureKey = false;
-        $currentStructureKey = $form->get('registerKey')->getData();
-        $structure = $structureRepo->findOneBy(['registerKey' => $currentStructureKey]);
-        if(!empty($structure) && !empty($structure->getId()) ) {
-            $validStructureKey = true;
-            $errorStructureKey = false;
+        if($form->isSubmitted()) {
+            $currentStructureKey = $form->get('registerKey')->getData();
+            $structure = $structureRepo->findOneBy(['registerKey' => $currentStructureKey]);
+            if(!empty($structure) && !empty($structure->getId()) ) {
+                $validStructureKey = true;
+            } else {
+                $errorStructureKey = 'Invalid structure key';
+            }
         }
 
         if ($form->isSubmitted() && $form->isValid() && $validStructureKey) {
@@ -53,10 +57,14 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
+        } else {
+            $errors = $form->getErrors(true);
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'formErrors' => $errors,
+            'errorStructureKey' => $errorStructureKey
         ]);
     }
 }
