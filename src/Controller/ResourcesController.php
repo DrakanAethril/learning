@@ -28,8 +28,11 @@ class ResourcesController extends AbstractController
     #[Route('/edit/{id<\d+>?0}', name: 'create')]
     public function edit(int $id, Request $request, ResourceRepository $resourceRepo, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
+        $successEdit = false;
+        $errors = [];
         $user = $this->getUser();
         if(!empty($id)) {
+            $create = false;
             $resource = $resourceRepo->findBy(['author' => $user->getId(), 'id' => $id]);
             if(empty($resource)) {
                 // should not do that
@@ -38,6 +41,7 @@ class ResourcesController extends AbstractController
                 $resource = $resource[0];
             }
         } else {
+            $create = true;
             $resource = new Resource();
         }
 
@@ -65,14 +69,24 @@ class ResourcesController extends AbstractController
             $entityManager->persist($resource);
             $entityManager->flush();
 
-            return $this->redirectToRoute('resources_create', ['id' => $resource->getId()]);
+            if($create) {
+                return $this->redirectToRoute('resources_create', ['id' => $resource->getId()]);
+            } else {
+                $successEdit = true;
+            }
+            
 
+        } else {
+            $errors = $form->getErrors(true);
         }
         
         return $this->render('resources/create.html.twig', [
             'resourceForm' => $form->createView(),
             'quizzContent' => $resourceContent,
-            'contentError' => $contentErrors
+            'contentError' => $contentErrors,
+            'formErrors' => $errors,
+            'creation' => $create,
+            'formSuccess' => $successEdit
         ]);
     }
 

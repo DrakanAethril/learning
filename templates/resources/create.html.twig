@@ -4,13 +4,26 @@
 
 {% block body %}
 
+{%  set infosTabClass = '' %}
+{%  set infosTabPaneClass = '' %}
+{%  set contentTabClass = '' %}
+{%  set contentTabPaneClass = '' %}
+
 <h4 class="fw-bold py-3 mb-4">
     <div class="row col-xl-12">
         <div class="float-left col-xl-6 mt-auto mb-auto">
             <span class="text-muted fw-light">
-                Resources /
+                {{'breadcrumb.resources'|trans}} /
             </span> 
-            Create
+            {% if creation is not empty %}
+                {{'breadcrumb.new'|trans}}
+                {% set infosTabClass = 'active' %}
+                {% set infosTabPaneClass = 'show active' %}
+            {% else %}
+                {{'breadcrumb.edit'|trans}}
+                {% set contentTabClass = 'active' %}
+                {% set contentTabPaneClass = 'show active' %}
+            {% endif %}
         </div>
     </div>
 </h4>
@@ -20,17 +33,47 @@
             <div class="nav-align-top mb-4">
                 <ul class="nav nav-pills nav-fill mb-3 col-xl-6" role="tablist">
                     <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#resource-pills-infos" aria-controls="resource-pills-infos" aria-selected="true">
+                    <button type="button" class="nav-link {{infosTabClass}}" role="tab" data-bs-toggle="tab" data-bs-target="#resource-pills-infos" aria-controls="resource-pills-infos" aria-selected="true">
                         Informations
                     </button>
                     </li>
-                    <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#resource-pills-content" aria-controls="resource-pills-content" aria-selected="false">
-                        Content
-                    </button>
+                    {% if creation is empty %}
+                        <li class="nav-item">
+                            <button type="button" class="nav-link {{contentTabClass}}" role="tab" data-bs-toggle="tab" data-bs-target="#resource-pills-content" aria-controls="resource-pills-content" aria-selected="false">
+                                Content
+                            </button>
+                        </li>
+                    {% endif %}
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane fade show active col-md-6" id="resource-pills-infos" role="tabpanel">
+                    {% if formSuccess is not empty %}
+                        <div class="alert alert-success" role="alert">
+                            {{'form.success.generic'|trans}}
+                        </div>
+                    {% endif %}
+                    {% if formErrors is not empty %}
+                        {% if formErrors|length %}
+                            <div class="alert alert-warning" role="alert">
+                                <ul>
+                                    {% for error in formErrors %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    {% if contentError is not empty %}
+                        {% if contentError|length %}
+                            <div class="alert alert-warning" role="alert">
+                                <ul>
+                                    {% for keyE, error in contentError %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    <div class="tab-pane fade col-md-6 {{infosTabPaneClass}}" id="resource-pills-infos" role="tabpanel">
                         <div class="mb-3">
                             <label for="email" class="form-label">{{'form.name.label'|trans}}</label>
                             {{ form_row(resourceForm.name, {
@@ -42,12 +85,25 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">{{'form.type.label'|trans}}</label>
-                            {{ form_row(resourceForm.type, {
-                                label: false,
-                                attr: {
-                                    class: 'form-select'
-                                }
-                            }) }}
+                            {% if creation is empty %}
+                                {{ form_row(resourceForm.type, {
+                                        label: false,
+                                        attr: {
+                                            class: 'form-select d-none',
+                                        }
+                                    }) 
+                                }}
+                                <input type="text" class="form-control" disabled="disabled" id="quiz-type" value="{{ resourceForm.vars.data.type.name }}" />
+                            {% else %}
+                                {{ form_row(resourceForm.type, {
+                                        label: false,
+                                        attr: {
+                                            class: 'form-select',
+                                        }
+                                    }) 
+                                }}
+                            {% endif %}
+                            
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">{{'form.status.label'|trans}}</label>
@@ -60,9 +116,11 @@
                         </div>
                         
                     </div>
-                    <div class="tab-pane fade" id="resource-pills-content" role="tabpanel">
-                        {{ include('resources/quizz/content.html.twig')}}
-                    </div>
+                    {% if creation is empty %}
+                        <div class="tab-pane fade  {{contentTabPaneClass}}" id="resource-pills-content" role="tabpanel">
+                            {{ include('resources/quizz/content.html.twig')}}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="text-end col-xl-12 mt-3">
