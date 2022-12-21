@@ -1,20 +1,57 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
 
-{% block title %}Hello HomeController!{% endblock %}
+<html lang="{{ app.request.getLocale() }}" class="light-style customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="{{asset('/')}}" data-template="vertical-menu-template-free">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+		<title>{{'welcome.title'|trans}}</title>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="{{asset('assets/img/favicon/favicon.ico')}}"/>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/perso/info-developpement/Symfony/Learning/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/perso/info-developpement/Symfony/Learning/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+		<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
+
+		<!-- Icons. Uncomment required icon fonts -->
+		<link rel="stylesheet" href="{{asset('assets/vendor/fonts/boxicons.css')}}"/>
+		<!-- Core CSS -->
+		<link rel="stylesheet" href="{{asset('assets/vendor/css/core.css')}}" class="template-customizer-core-css"/>
+		<link rel="stylesheet" href="{{asset('assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css"/>
+		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
+		<!-- Vendors CSS -->
+		<link rel="stylesheet" href="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}"/>
+        <!-- Page -->
+        <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/page-misc.css')}}" />
+  </head>
+
+  <body>
+    <!-- Content -->
+
+    <!--Under Maintenance -->
+    <div class="container-xxl container-p-y">
+      <div class="misc-wrapper">
+        <h2 class="mb-2 mx-2">{{'welcome.main-text'|trans}}</h2>
+        <p class="mb-4 mx-2">{{'welcome.secondary-text'|trans}}</p>
+        <div class="row col-md-5 mt-3 mb-3">
+            <div class="col-md-6">
+                <a href="{{path('app_login')}}" class="btn btn-primary">{{'welcome.login-button'|trans}}</a>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="{{path('app_register')}}" class="btn btn-primary">{{'welcome.register-button'|trans}}</a>
+            </div>
+        </div>      
+        <div class="mt-4">
+          <img
+            src="{{asset('assets/img/illustrations/girl-doing-yoga-light.png')}}"
+            alt="girl-doing-yoga-light"
+            width="500"
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

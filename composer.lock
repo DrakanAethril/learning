@@ -1746,16 +1746,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v4.4.5",
+            "version": "v4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "abf018d4f05547b6640a41c911095d2894a23d17"
+                "reference": "b1ea3b93c82a6c410f91100da658967d2fcad369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/abf018d4f05547b6640a41c911095d2894a23d17",
-                "reference": "abf018d4f05547b6640a41c911095d2894a23d17",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/b1ea3b93c82a6c410f91100da658967d2fcad369",
+                "reference": "b1ea3b93c82a6c410f91100da658967d2fcad369",
                 "shasum": ""
             },
             "require": {
@@ -1827,7 +1827,7 @@
             ],
             "support": {
                 "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.4.5"
+                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.5.0"
             },
             "funding": [
                 {
@@ -1835,7 +1835,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-14T19:16:19+00:00"
+            "time": "2022-12-21T19:04:08+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -3106,12 +3106,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "62e04bf107ae12dba5a355d1e19e63ce567296ac"
+                "reference": "40234848b0fa0f6cd19e07c668f669c2c5a18aa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/62e04bf107ae12dba5a355d1e19e63ce567296ac",
-                "reference": "62e04bf107ae12dba5a355d1e19e63ce567296ac",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/40234848b0fa0f6cd19e07c668f669c2c5a18aa5",
+                "reference": "40234848b0fa0f6cd19e07c668f669c2c5a18aa5",
                 "shasum": ""
             },
             "require": {
@@ -3185,7 +3185,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-15T14:34:42+00:00"
+            "time": "2022-12-20T08:50:44+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4511,12 +4511,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "8d7f3e0bf843c3832d2eb96eeeb570d409aa9da3"
+                "reference": "f9e6fbd3c1ef04d3cae711d2218df27c042cc418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/8d7f3e0bf843c3832d2eb96eeeb570d409aa9da3",
-                "reference": "8d7f3e0bf843c3832d2eb96eeeb570d409aa9da3",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/f9e6fbd3c1ef04d3cae711d2218df27c042cc418",
+                "reference": "f9e6fbd3c1ef04d3cae711d2218df27c042cc418",
                 "shasum": ""
             },
             "require": {
@@ -4614,7 +4614,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-19T14:34:29+00:00"
+            "time": "2022-12-21T17:24:45+00:00"
         },
         {
             "name": "symfony/intl",
