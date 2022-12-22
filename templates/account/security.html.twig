@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'platform.name'|trans}} - {{'title.section-account'|trans}}{% endblock %}
+{% block title %}{{'platform.name'|trans}} - {{'section-account.title'|trans}}{% endblock %}
 
 {% block body %}
 	<h4 class="fw-bold py-3 mb-4">
@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			{% include('account/tabs.html.twig') %}
-			<div class="card">
+			<div class="card mt-4">
 				<h5 class="card-header">{{'account.change-password'|trans}}</h5>
 				<div class="card-body">
 					{{ form_start(changePasswordForm) }}

@@ -4,13 +4,11 @@
 			<i class="bx bx-user me-1"></i>
 			{{'account.tab-informations'|trans}}</a>
 	</li>
-	{% if is_granted('ROLE_STUDENT') %}
-		<li class="nav-item">
-			<a class="nav-link {{ accountTab == 'structure' ? 'active' : '' }}" href="{{ path('account_structure')}}">
-				<i class="bx bxs-school me-1"></i>
-				{{'account.tab-structure'|trans}}</a>
-		</li>
-	{% endif %}
+	<li class="nav-item">
+		<a class="nav-link {{ accountTab == 'structure' ? 'active' : '' }}" href="{{ path('account_structure')}}">
+			<i class="bx bxs-school me-1"></i>
+			{{'account.tab-structure'|trans}}</a>
+	</li>
 	<li class="nav-item">
 		<a class="nav-link {{ accountTab == 'security' ? 'active' : '' }}" href="{{ path('account_security')}}">
 			<i class="bx bx-lock me-1"></i>

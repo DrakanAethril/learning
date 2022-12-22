@@ -4114,12 +4114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/framework-bundle.git",
-                "reference": "0199ffa3eed74f3f0cd44cb46a963c6440b5f9e3"
+                "reference": "a7eed3e6ffdcc3ae116384376ba8d403b3a1625d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/0199ffa3eed74f3f0cd44cb46a963c6440b5f9e3",
-                "reference": "0199ffa3eed74f3f0cd44cb46a963c6440b5f9e3",
+                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/a7eed3e6ffdcc3ae116384376ba8d403b3a1625d",
+                "reference": "a7eed3e6ffdcc3ae116384376ba8d403b3a1625d",
                 "shasum": ""
             },
             "require": {
@@ -4146,6 +4146,7 @@
                 "phpdocumentor/type-resolver": "<1.4.0",
                 "phpunit/phpunit": "<5.4.3",
                 "symfony/asset": "<5.4",
+                "symfony/clock": "<6.3",
                 "symfony/console": "<5.4",
                 "symfony/dom-crawler": "<5.4",
                 "symfony/dotenv": "<5.4",
@@ -4257,7 +4258,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-20T16:41:47+00:00"
+            "time": "2022-12-22T10:55:33+00:00"
         },
         {
             "name": "symfony/http-client",
@@ -4782,12 +4783,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/messenger.git",
-                "reference": "efd88bd665392849d3b460a196b507ce1c1b372a"
+                "reference": "a6690bacc01b602a084a34dde514ddc2bb6af104"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/messenger/zipball/efd88bd665392849d3b460a196b507ce1c1b372a",
-                "reference": "efd88bd665392849d3b460a196b507ce1c1b372a",
+                "url": "https://api.github.com/repos/symfony/messenger/zipball/a6690bacc01b602a084a34dde514ddc2bb6af104",
+                "reference": "a6690bacc01b602a084a34dde514ddc2bb6af104",
                 "shasum": ""
             },
             "require": {
@@ -4861,7 +4862,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-16T15:10:43+00:00"
+            "time": "2022-12-21T21:29:28+00:00"
         },
         {
             "name": "symfony/mime",
@@ -6306,12 +6307,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "3b80d2e342e94e20e216350043458b7a53193866"
+                "reference": "03822b44317dcddec8a67795e6ceb8bcd4aaa534"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/3b80d2e342e94e20e216350043458b7a53193866",
-                "reference": "3b80d2e342e94e20e216350043458b7a53193866",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/03822b44317dcddec8a67795e6ceb8bcd4aaa534",
+                "reference": "03822b44317dcddec8a67795e6ceb8bcd4aaa534",
                 "shasum": ""
             },
             "require": {
@@ -6398,7 +6399,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-20T16:41:47+00:00"
+            "time": "2022-12-21T21:24:27+00:00"
         },
         {
             "name": "symfony/security-core",
