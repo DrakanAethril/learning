@@ -2,14 +2,14 @@ platform:
     name: Linotte
 register:
     title: inscription
-    welcome: Bienvenue !
-    signin_phrase: La création de compte est requise
+    welcome: 'Bienvenue !'
+    signin_phrase: 'La création de compte est requise'
     signup:
-        button: S'enregistrer
+        button: "S'enregistrer"
     already:
-        text: Déjà inscrit ?
+        text: 'Déjà inscrit ?'
     signin:
-        instead: Se connecter
+        instead: 'Se connecter'
 form:
     email:
         label: email
@@ -18,7 +18,7 @@ form:
     lastname:
         label: nom
     password:
-        label: mot de passe
+        label: 'mot de passe'
     passwordrepeat:
         label: confirmation
     name:
@@ -27,19 +27,81 @@ form:
         label: type
     status:
         label: statut
+    success:
+        generic: __form.success.generic
+    upd-infos-btn: __form.upd-infos-btn
+    change-password-btn: __form.change-password-btn
+    save-btn: __form.save-btn
+    registerKey:
+        label: __form.registerKey.label
 login:
-    title: S'identifier
+    title: "S'identifier"
     welcome: Bienvenue
-    signin_phrase: Merci de vous connecter
+    signin_phrase: 'Merci de vous connecter'
     email:
         placeholder: email
     forgot_password:
-        cta: mot de passe oublié ?
+        cta: 'mot de passe oublié ?'
     signin:
-        button: Se connecter
+        button: 'Se connecter'
     new:
-        link: Vous êtes nouveau ?
-        create:  Créer un compte
+        link: 'Vous êtes nouveau ?'
+        create: 'Créer un compte'
 remember:
-    me: Se souvenir de moi
+    me: 'Se souvenir de moi'
 'Invalid params provided': '__Invalid params provided'
+account-errors:
+    invalid-structure: __account-errors.invalid-structure
+    empty-cohorts: __account-errors.empty-cohorts
+'Question of item %idQuizzQuestion% needs a text': '__Question of item %idQuizzQuestion% needs a text'
+'Question %idQuizzQuestion% needs at least 2 answers': '__Question %idQuizzQuestion% needs at least 2 answers'
+'All answers of item %idQuizzQuestion% needs text': '__All answers of item %idQuizzQuestion% needs text'
+title:
+    section-account: __title.section-account
+breadcrumb:
+    account-settings: __breadcrumb.account-settings
+    account:
+        infos: __breadcrumb.account.infos
+        removal: __breadcrumb.account.removal
+        security: __breadcrumb.account.security
+        structure: __breadcrumb.account.structure
+    resources: __breadcrumb.resources
+    new: __breadcrumb.new
+    edit: __breadcrumb.edit
+account:
+    informations: __account.informations
+    change-password: __account.change-password
+    tab-informations: __account.tab-informations
+    tab-structure: __account.tab-structure
+    tab-security: __account.tab-security
+    tab-removal: __account.tab-removal
+section-account:
+    title: __section-account.title
+    removal-title: __section-account.removal-title
+    removal-sure: __section-account.removal-sure
+    removal-contact-admin: __section-account.removal-contact-admin
+welcome:
+    title: __welcome.title
+    main-text: __welcome.main-text
+    secondary-text: __welcome.secondary-text
+    login-button: __welcome.login-button
+    register-button: __welcome.register-button
+menu:
+    dashboard: __menu.dashboard
+    studyzone: __menu.studyzone
+    classrooms: __menu.classrooms
+    evals: __menu.evals
+    trainings: __menu.trainings
+    tools: __menu.tools
+    cs: __menu.cs
+    cs-docs: __menu.cs-docs
+    cs-certifications: __menu.cs-certifications
+    cs-sandboxes: __menu.cs-sandboxes
+    resources: __menu.resources
+    my-resources: __menu.my-resources
+    new-resources: __menu.new-resources
+resources:
+    name: __resources.name
+    type: __resources.type
+    status: __resources.status
+actions: __actions
