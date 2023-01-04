@@ -1,6 +1,6 @@
-<div class="card accordion-item {{activeElem}} border border-dark js-quizz-elem-main" name="quizz-elem-{{idQ}}" id="quizz-elem-{{idQ}}" data-qid="{{idQ}}">
+<div class="card accordion-item {% if showElem is empty %} active {% endif %} border border-dark js-quizz-elem-main" name="quizz-elem-{{idQ}}" id="quizz-elem-{{idQ}}" data-qid="{{idQ}}">
 	<h2 class="accordion-header" id="heading{{idQ}}">
-		<button type="button" class="accordion-button {% if activeElem is empty %} collapsed {% endif %}" data-bs-toggle="{{addCollapseEvent|default('collapse')}}" data-bs-target="#accordion{{idQ}}" aria-expanded="true" aria-controls="accordion{{idQ}}">
+		<button type="button" class="accordion-button {% if showElem is empty %} collapsed {% endif %}" data-bs-toggle="{{addCollapseEvent|default('collapse')}}" data-bs-target="#accordion{{idQ}}" aria-expanded="true" aria-controls="accordion{{idQ}}">
 			{{question.q|default('')}}
 		</button>
 	</h2>
@@ -12,7 +12,7 @@
 			</div>
             <div class="row js-quizz-answers" data-qid="{{idQ}}">
 				{% if question.a is not empty %}
-					{% for keyA, answerO in question.a %}
+					{% for keyA, answerO in array_shuffle(question.a) %}
 						{{ include('resources/quizz/display/tpl_answer.html.twig', {idR: keyA, answer: answerO})}}
 					{% endfor %}
 				{% endif %}
