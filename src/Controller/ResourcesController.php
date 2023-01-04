@@ -33,13 +33,13 @@ class ResourcesController extends AbstractController
         $user = $this->getUser();
         if(!empty($id)) {
             $create = false;
-            $resource = $resourceRepo->findBy(['author' => $user->getId(), 'id' => $id]);
+            $resource = $resourceRepo->findOneBy(['author' => $user->getId(), 'id' => $id]);
             if(empty($resource)) {
                 // should not do that
                 return $this->redirectToRoute('resources_mine');
-            } else {
+            }/* else {
                 $resource = $resource[0];
-            }
+            }*/
         } else {
             $create = true;
             $resource = new Resource();
@@ -88,6 +88,17 @@ class ResourcesController extends AbstractController
             'creation' => $create,
             'formSuccess' => $successEdit
         ]);
+    }
+
+    #[Route('/display/{id<\d+>?0}', name: 'display')]
+    public function display(int $id, Request $request, ResourceRepository $resourceRepo, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response {
+
+        $resource = $resourceRepo->findOneBy(['id' => $id]);
+        $resourceContent = $resource->getContent();
+        return $this->render('resources/quizz/display/display.html.twig', [
+            'quizzContent' => $resourceContent
+        ]);
+
     }
 
     private function buildQuizzContentArray(TranslatorInterface $translator) : array {

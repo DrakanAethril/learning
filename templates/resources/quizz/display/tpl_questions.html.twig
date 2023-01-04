@@ -1,0 +1,27 @@
+<div class="card accordion-item {{activeElem}} border border-dark js-quizz-elem-main" name="quizz-elem-{{idQ}}" id="quizz-elem-{{idQ}}" data-qid="{{idQ}}">
+	<h2 class="accordion-header" id="heading{{idQ}}">
+		<button type="button" class="accordion-button {% if activeElem is empty %} collapsed {% endif %}" data-bs-toggle="{{addCollapseEvent|default('collapse')}}" data-bs-target="#accordion{{idQ}}" aria-expanded="true" aria-controls="accordion{{idQ}}">
+			{{question.q|default('')}}
+		</button>
+	</h2>
+
+	<div id="accordion{{idQ}}" class="accordion-collapse collapse {{showElem}}" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+			<div class="divider divider-info mb-3">
+				<div class="divider-text">Réponses</div>
+			</div>
+            <div class="row js-quizz-answers" data-qid="{{idQ}}">
+				{% if question.a is not empty %}
+					{% for keyA, answerO in question.a %}
+						{{ include('resources/quizz/display/tpl_answer.html.twig', {idR: keyA, answer: answerO})}}
+					{% endfor %}
+				{% endif %}
+            </div>
+
+
+			<div class="text-end col-xl-12 mt-3">
+				<button class="btn btn-primary px-5 js-quizz-elem-display-validate">Valider</button>
+			</div>
+		</div>
+	</div>
+</div>

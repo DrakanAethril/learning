@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ResourcesController!{% endblock %}
+
+{% block body %}
+
+    <div class="row mb-3">
+        <div class="accordion" id="accordionQuizz">
+            {% set qCount = 1 %}
+            {% if quizzContent is not empty %}
+                {% for keyQ, question in quizzContent.q %}
+                {% set showElem = ( qCount == 1 ? 'show' : '' ) %}
+                {% set activeElem = ( qCount == 1 ? 'active' : '' ) %}
+                    {{ include('resources/quizz/display/tpl_questions.html.twig', {idQ: keyQ, showElem: showElem, activeElem: activeElem, question: question })}}
+                {% set qCount = qCount + 1 %}
+            {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}
