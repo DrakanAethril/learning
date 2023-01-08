@@ -28,12 +28,12 @@ form:
     status:
         label: statut
     success:
-        generic: __form.success.generic
-    upd-infos-btn: __form.upd-infos-btn
-    change-password-btn: __form.change-password-btn
-    save-btn: __form.save-btn
+        generic: Enregistrement effectué avec succès
+    upd-infos-btn: Mettre à jour
+    change-password-btn: Changer de mot de passe
+    save-btn: Enregistrer
     registerKey:
-        label: __form.registerKey.label
+        label: Clé d'inscription
 login:
     title: "S'identifier"
     welcome: Bienvenue
@@ -49,32 +49,32 @@ login:
         create: 'Créer un compte'
 remember:
     me: 'Se souvenir de moi'
-'Invalid params provided': '__Invalid params provided'
+'Invalid params provided': 'Paramètres invalides'
 account-errors:
-    invalid-structure: __account-errors.invalid-structure
-    empty-cohorts: __account-errors.empty-cohorts
-'Question of item %idQuizzQuestion% needs a text': '__Question of item %idQuizzQuestion% needs a text'
-'Question %idQuizzQuestion% needs at least 2 answers': '__Question %idQuizzQuestion% needs at least 2 answers'
-'All answers of item %idQuizzQuestion% needs text': '__All answers of item %idQuizzQuestion% needs text'
+    invalid-structure: Structure invalide
+    empty-cohorts: Vous devez cocher au moins une cohorte
+'Question of item %idQuizzQuestion% needs a text': 'Le texte de la question %idQuizzQuestion% est obligatoire.'
+'Question %idQuizzQuestion% needs at least 2 answers': 'La question %idQuizzQuestion% doit avoir au moins 2 réponses.'
+'All answers of item %idQuizzQuestion% needs text': 'Toutes les réponses de la question %idQuizzQuestion% doievent avoir du texte.'
 title:
-    section-account: __title.section-account
+    section-account: Mon compte
 breadcrumb:
-    account-settings: __breadcrumb.account-settings
+    account-settings: Mon compte
     account:
-        infos: __breadcrumb.account.infos
-        removal: __breadcrumb.account.removal
-        security: __breadcrumb.account.security
-        structure: __breadcrumb.account.structure
-    resources: __breadcrumb.resources
-    new: __breadcrumb.new
-    edit: __breadcrumb.edit
+        infos: Mes Informations
+        removal: Suppimer mon compte
+        security: Informations de sécurité
+        structure: Informations de structures
+    resources: Ressources
+    new: Nouvelle ressource
+    edit: Modification
 account:
-    informations: __account.informations
-    change-password: __account.change-password
-    tab-informations: __account.tab-informations
-    tab-structure: __account.tab-structure
-    tab-security: __account.tab-security
-    tab-removal: __account.tab-removal
+    informations: Mes Informations
+    change-password: Changement de mot de passe
+    tab-informations: Informations
+    tab-structure: Structure
+    tab-security: Sécurité
+    tab-removal: Suppression
 section-account:
     title: __section-account.title
     removal-title: __section-account.removal-title
@@ -87,21 +87,26 @@ welcome:
     login-button: __welcome.login-button
     register-button: __welcome.register-button
 menu:
-    dashboard: __menu.dashboard
-    studyzone: __menu.studyzone
-    classrooms: __menu.classrooms
-    evals: __menu.evals
-    trainings: __menu.trainings
-    tools: __menu.tools
-    cs: __menu.cs
-    cs-docs: __menu.cs-docs
-    cs-certifications: __menu.cs-certifications
-    cs-sandboxes: __menu.cs-sandboxes
-    resources: __menu.resources
-    my-resources: __menu.my-resources
-    new-resources: __menu.new-resources
+    dashboard: Accueil
+    studyzone: Enseignements
+    classrooms: Cours
+    evals: Evaluations
+    trainings: Entraînements
+    tools: Outils
+    cs: Informatique
+    cs-docs: Documentations
+    cs-certifications: Certifications
+    cs-sandboxes: Bacs à sables
+    resources: Ressources
+    my-resources: Mes ressources
+    new-resources: Créer une ressource
 resources:
-    name: __resources.name
-    type: __resources.type
-    status: __resources.status
-actions: __actions
+    name: Nom
+    type: Type
+    status: Status
+actions: Actions
+resource:
+    trainings-title: Entraînements
+training:
+    name: Nom
+    status: Status
