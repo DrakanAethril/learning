@@ -30,9 +30,13 @@ class Cohort
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'cohorts')]
     private Collection $users;
 
+    #[ORM\ManyToMany(targetEntity: Trainings::class, mappedBy: 'cohorts')]
+    private Collection $trainings;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->trainings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -104,6 +108,33 @@ class Cohort
     {
         $structure = empty($this->getStructure()) ? '' : ' ('.$this->getStructure().')';
         return $this->getName().$structure;
+    }
+
+    /**
+     * @return Collection<int, Trainings>
+     */
+    public function getTrainings(): Collection
+    {
+        return $this->trainings;
+    }
+
+    public function addTraining(Trainings $training): self
+    {
+        if (!$this->trainings->contains($training)) {
+            $this->trainings->add($training);
+            $training->addCohort($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraining(Trainings $training): self
+    {
+        if ($this->trainings->removeElement($training)) {
+            $training->removeCohort($this);
+        }
+
+        return $this;
     }
 
 

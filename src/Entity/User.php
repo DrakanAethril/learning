@@ -54,11 +54,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Resource::class)]
     private Collection $resources;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Trainings::class)]
+    private Collection $trainings;
+
     public function __construct()
     {
         $this->cohorts = new ArrayCollection();
         $this->structures = new ArrayCollection();
         $this->resources = new ArrayCollection();
+        $this->trainings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -260,6 +264,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($resource->getAuthor() === $this) {
                 $resource->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Trainings>
+     */
+    public function getTrainings(): Collection
+    {
+        return $this->trainings;
+    }
+
+    public function addTraining(Trainings $training): self
+    {
+        if (!$this->trainings->contains($training)) {
+            $this->trainings->add($training);
+            $training->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraining(Trainings $training): self
+    {
+        if ($this->trainings->removeElement($training)) {
+            // set the owning side to null (unless already changed)
+            if ($training->getAuthor() === $this) {
+                $training->setAuthor(null);
             }
         }
 
