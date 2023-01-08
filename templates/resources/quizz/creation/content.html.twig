@@ -13,7 +13,7 @@
             {% for keyQ, question in quizzContent.q %}
                 {% set key = keyQ|replace({'q': ''}) %}
                 {% set showElem = ( qCount == 1 ? 'show' : '' ) %}
-                {{ include('resources/quizz/tpl_questions.html.twig', {idQ: key, showElem: showElem, question: question })}}
+                {{ include('resources/quizz/creation/tpl_questions.html.twig', {idQ: key, showElem: showElem, question: question })}}
                 {% set qCount = qCount + 1 %}
             {% endfor %}
             <input type="hidden" name="quizz_q_nb" id="quizz_q_nb" value="{{quizzContent.max_q_id}}"/>
@@ -25,10 +25,10 @@
 </div>
 
 <div class="d-none" id="quizz_tpl_empty_q">
-    {{ include('resources/quizz/tpl_questions.html.twig', {idQ:'%IDQ%', showElem:'', question: '', addCollapseEvent: '%COLLAPSE%', qCount: 'Nouveau'})}}
+    {{ include('resources/quizz/creation/tpl_questions.html.twig', {idQ:'%IDQ%', showElem:'', question: '', addCollapseEvent: '%COLLAPSE%', qCount: 'Nouveau'})}}
 </div>
 <div class="d-none" id="quizz_tpl_empty_a">
-    {{ include('resources/quizz/tpl_answer.html.twig', {idQ:'%IDQ%', idR:'%IDR%', answer: '', showElem:'', addCollapseEvent: '%COLLAPSE%'})}}
+    {{ include('resources/quizz/creation/tpl_answer.html.twig', {idQ:'%IDQ%', idR:'%IDR%', answer: '', showElem:'', addCollapseEvent: '%COLLAPSE%'})}}
 </div>
 
 <script type="text/javascript">

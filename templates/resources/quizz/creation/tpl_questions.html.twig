@@ -18,12 +18,12 @@
 
             <div class="row js-quizz-answers" data-qid="{{idQ}}">
 				{% if question is empty or question.a is empty %}
-                	{{ include('resources/quizz/tpl_answer.html.twig', {idR: '1', answer:''})}}
-                	{{ include('resources/quizz/tpl_answer.html.twig', {idR: '2', answer:''})}}
+                	{{ include('resources/quizz/creation/tpl_answer.html.twig', {idR: '1', answer:''})}}
+                	{{ include('resources/quizz/creation/tpl_answer.html.twig', {idR: '2', answer:''})}}
 					<input type="hidden" name="quizz_q_{{idQ}}_a_nb" id="quizz_q_{{idQ}}_a_nb" value="{{question.max_a_id|default('2')}}"/>
 				{% else %}
 					{% for keyA, answerO in question.a %}
-						{{ include('resources/quizz/tpl_answer.html.twig', {idR: keyA, answer: answerO})}}
+						{{ include('resources/quizz/creation/tpl_answer.html.twig', {idR: keyA, answer: answerO})}}
 					{% endfor %}
 					<input type="hidden" name="quizz_q_{{idQ}}_a_nb" id="quizz_q_{{idQ}}_a_nb" value="{{question.max_a_id}}"/>
 				{% endif %}

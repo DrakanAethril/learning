@@ -118,7 +118,7 @@
                     </div>
                     {% if creation is empty %}
                         <div class="tab-pane fade  {{contentTabPaneClass}}" id="resource-pills-content" role="tabpanel">
-                            {{ include('resources/quizz/content.html.twig')}}
+                            {{ include('resources/'~resource.type.name~'/creation/content.html.twig')}}
                         </div>
                     {% endif %}
                 </div>

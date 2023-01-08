@@ -83,6 +83,7 @@ class ResourcesController extends AbstractController
         return $this->render('resources/create.html.twig', [
             'resourceForm' => $form->createView(),
             'quizzContent' => $resourceContent,
+            'resource' => $resource,
             'contentError' => $contentErrors,
             'formErrors' => $errors,
             'creation' => $create,
