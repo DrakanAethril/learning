@@ -96,7 +96,7 @@ class ResourcesController extends AbstractController
 
         $resource = $resourceRepo->findOneBy(['id' => $id]);
         $resourceContent = $resource->getContent();
-        return $this->render('resources/quizz/display/display.html.twig', [
+        return $this->render('resources/'.$resource->getType()->getName().'/display/display.html.twig', [
             'quizzContent' => $resourceContent
         ]);
 

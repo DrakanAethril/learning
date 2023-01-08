@@ -8,6 +8,8 @@
 {%  set infosTabPaneClass = '' %}
 {%  set contentTabClass = '' %}
 {%  set contentTabPaneClass = '' %}
+{%  set broadcastTabClass = '' %}
+{%  set broadcastTabPaneClass = '' %}
 
 <h4 class="fw-bold py-3 mb-4">
     <div class="row col-xl-12">
@@ -21,8 +23,13 @@
                 {% set infosTabPaneClass = 'show active' %}
             {% else %}
                 {{'breadcrumb.edit'|trans}}
-                {% set contentTabClass = 'active' %}
-                {% set contentTabPaneClass = 'show active' %}
+                {% if resource.content is empty %}
+                    {% set contentTabClass = 'active' %}
+                    {% set contentTabPaneClass = 'show active' %}
+                {% else %}
+                    {% set broadcastTabClass = 'show active' %}
+                    {% set broadcastTabPaneClass = 'show active' %}
+                {% endif %}
             {% endif %}
         </div>
     </div>
@@ -41,6 +48,11 @@
                         <li class="nav-item">
                             <button type="button" class="nav-link {{contentTabClass}}" role="tab" data-bs-toggle="tab" data-bs-target="#resource-pills-content" aria-controls="resource-pills-content" aria-selected="false">
                                 Content
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link {{broadcastTabClass}}" role="tab" data-bs-toggle="tab" data-bs-target="#resource-pills-broadcast" aria-controls="resource-pills-broadcast" aria-selected="false">
+                                Broadcast
                             </button>
                         </li>
                     {% endif %}
@@ -119,6 +131,9 @@
                     {% if creation is empty %}
                         <div class="tab-pane fade  {{contentTabPaneClass}}" id="resource-pills-content" role="tabpanel">
                             {{ include('resources/'~resource.type.name~'/creation/content.html.twig')}}
+                        </div>
+                        <div class="tab-pane fade  {{broadcastTabPaneClass}}" id="resource-pills-broadcast" role="tabpanel">
+                            {{ include('resources/'~resource.type.name~'/creation/broadcast.html.twig')}}
                         </div>
                     {% endif %}
                 </div>
