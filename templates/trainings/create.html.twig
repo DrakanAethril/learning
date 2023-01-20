@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Trainings{% endblock %}
+
+{% block body %}
+
+    {%  set infosTabClass = '' %}
+    {%  set infosTabPaneClass = '' %}
+    {%  set contentTabClass = '' %}
+    {%  set contentTabPaneClass = '' %}
+
+    <h4 class="fw-bold py-3 mb-4">
+        <div class="row col-xl-12">
+            <div class="float-left col-xl-6 mt-auto mb-auto">
+                <span class="text-muted fw-light">
+                    {{'breadcrumb.trainings'|trans}} /
+                </span> 
+                {% if creation is not empty %}
+                    {{'breadcrumb.new'|trans}}
+                    {% set infosTabClass = 'active' %}
+                    {% set infosTabPaneClass = 'show active' %}
+                {% else %}
+                    {{'breadcrumb.edit'|trans}}
+                    {% set contentTabClass = 'active' %}
+                    {% set contentTabPaneClass = 'show active' %}
+                {% endif %}
+            </div>
+        </div>
+    </h4>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="nav-align-top mb-4">
+                <ul class="nav nav-pills nav-fill mb-3 col-xl-6" role="tablist">
+                    <li class="nav-item">
+                    <button type="button" class="nav-link {{infosTabClass}}" role="tab" data-bs-toggle="tab" data-bs-target="#training-pills-infos" aria-controls="training-pills-infos" aria-selected="true">
+                        {{'tabs.informations'|trans}}
+                    </button>
+                    </li>
+                    {% if creation is empty %}
+                        <li class="nav-item">
+                            <button type="button" class="nav-link {{contentTabClass}}" role="tab" data-bs-toggle="tab" data-bs-target="#training-pills-content" aria-controls="training-pills-content" aria-selected="false">
+                                {{'tabs.content'|trans}}
+                            </button>
+                        </li>
+                    {% endif %}
+                </ul>
+                <div class="tab-content">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

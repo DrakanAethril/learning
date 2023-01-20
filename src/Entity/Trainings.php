@@ -52,6 +52,10 @@ class Trainings
     #[ORM\ManyToOne(inversedBy: 'trainings')]
     private ?Resource $resource = null;
 
+    #[ORM\ManyToOne(inversedBy: 'trainings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TrainingsStatus $status = null;
+
     public function __construct()
     {
         $this->cohorts = new ArrayCollection();
@@ -215,6 +219,18 @@ class Trainings
     public function setResource(?Resource $resource): self
     {
         $this->resource = $resource;
+
+        return $this;
+    }
+
+    public function getStatus(): ?TrainingsStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?TrainingsStatus $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

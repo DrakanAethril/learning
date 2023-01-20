@@ -28,12 +28,12 @@ form:
     status:
         label: statut
     success:
-        generic: Enregistrement effectué avec succès
-    upd-infos-btn: Mettre à jour
-    change-password-btn: Changer de mot de passe
+        generic: 'Enregistrement effectué avec succès'
+    upd-infos-btn: 'Mettre à jour'
+    change-password-btn: 'Changer de mot de passe'
     save-btn: Enregistrer
     registerKey:
-        label: Clé d'inscription
+        label: "Clé d'inscription"
 login:
     title: "S'identifier"
     welcome: Bienvenue
@@ -51,26 +51,27 @@ remember:
     me: 'Se souvenir de moi'
 'Invalid params provided': 'Paramètres invalides'
 account-errors:
-    invalid-structure: Structure invalide
-    empty-cohorts: Vous devez cocher au moins une cohorte
+    invalid-structure: 'Structure invalide'
+    empty-cohorts: 'Vous devez cocher au moins une cohorte'
 'Question of item %idQuizzQuestion% needs a text': 'Le texte de la question %idQuizzQuestion% est obligatoire.'
 'Question %idQuizzQuestion% needs at least 2 answers': 'La question %idQuizzQuestion% doit avoir au moins 2 réponses.'
 'All answers of item %idQuizzQuestion% needs text': 'Toutes les réponses de la question %idQuizzQuestion% doievent avoir du texte.'
 title:
-    section-account: Mon compte
+    section-account: 'Mon compte'
 breadcrumb:
-    account-settings: Mon compte
+    account-settings: 'Mon compte'
     account:
-        infos: Mes Informations
-        removal: Suppimer mon compte
-        security: Informations de sécurité
-        structure: Informations de structures
+        infos: 'Mes Informations'
+        removal: 'Suppimer mon compte'
+        security: 'Informations de sécurité'
+        structure: 'Informations de structures'
     resources: Ressources
-    new: Nouvelle ressource
+    new: Création
     edit: Modification
+    trainings: Entraînements
 account:
-    informations: Mes Informations
-    change-password: Changement de mot de passe
+    informations: 'Mes Informations'
+    change-password: 'Changement de mot de passe'
     tab-informations: Informations
     tab-structure: Structure
     tab-security: Sécurité
@@ -96,10 +97,10 @@ menu:
     cs: Informatique
     cs-docs: Documentations
     cs-certifications: Certifications
-    cs-sandboxes: Bacs à sables
+    cs-sandboxes: 'Bacs à sables'
     resources: Ressources
-    my-resources: Mes ressources
-    new-resources: Créer une ressource
+    my-resources: 'Mes ressources'
+    new-resources: 'Créer une ressource'
 resources:
     name: Nom
     type: Type
@@ -110,3 +111,6 @@ resource:
 training:
     name: Nom
     status: Status
+tabs:
+    informations: Informations
+    content: Contenu
