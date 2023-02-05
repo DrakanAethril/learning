@@ -34,6 +34,12 @@ form:
     save-btn: Enregistrer
     registerKey:
         label: "Clé d'inscription"
+    description:
+        label: description
+    button:
+        save: Enregistrer
+    resource:
+        label: ressource
 login:
     title: "S'identifier"
     welcome: Bienvenue

@@ -82,9 +82,22 @@
                                     }
                                 }) }}
                             </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">{{'form.resource.label'|trans}}</label>
+                                {{ form_row(trainingForm.resource, {
+                                        label: false,
+                                        attr: {
+                                            class: 'form-control',
+                                        }
+                                    }) 
+                                }}
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-end col-xl-12 mt-3">
+                <input type="submit" class="btn btn-primary px-5" value="{{'form.button.save'|trans}}">
             </div>
         {{ form_end(trainingForm) }}
     </div>

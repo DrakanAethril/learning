@@ -3,9 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Trainings;
+use App\Entity\Resource;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
 
 class TrainingFormType extends AbstractType
 {
@@ -14,6 +20,15 @@ class TrainingFormType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('resource', EntityType::class, [
+                'class' => Resource::class,
+                'disabled' => true,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a type',
+                    ])
+                ]
+            ])
             //->add('force_requirements')
             //->add('params')
             //->add('start_date')
