@@ -15,6 +15,8 @@ use App\Entity\Trainings;
 use App\Entity\Resource;
 use App\Repository\ResourceRepository;
 
+use App\Form\TrainingFormType;
+
 class TrainingsController extends AbstractController
 {
     #[Route('/lms/trainings', name: 'lms_trainings')]
@@ -53,11 +55,16 @@ class TrainingsController extends AbstractController
             $training = new Trainings();
             $training->setResource($resource);
         }
+        $form = $this->createForm(TrainingFormType::class, $training);
+        $form->handleRequest($request);
 
         
         return $this->render('trainings/create.html.twig', [
+            'trainingForm' => $form->createView(),
             'training' => $training,
-            'creation' => $create
+            'formErrors' => $errors,
+            'creation' => $create,
+            'formSuccess' => $successEdit
         ]);
 
     }

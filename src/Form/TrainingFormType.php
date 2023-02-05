@@ -14,15 +14,11 @@ class TrainingFormType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('force_requirements')
-            ->add('params')
-            ->add('creation_date')
-            ->add('start_date')
-            ->add('end_date')
-            ->add('author')
-            ->add('cohorts')
-            ->add('requirements')
-            ->add('resource')
+            //->add('force_requirements')
+            //->add('params')
+            //->add('start_date')
+            //->add('end_date')
+            //->add('requirements')
         ;
     }
 
