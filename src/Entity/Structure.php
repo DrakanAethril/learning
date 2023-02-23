@@ -30,9 +30,6 @@ class Structure
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'structures')]
     private Collection $users;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $registerKey = null;
-
     public function __construct()
     {
         $this->cohorts = new ArrayCollection();
@@ -127,15 +124,4 @@ class Structure
         return $this;
     }
 
-    public function getRegisterKey(): ?string
-    {
-        return $this->registerKey;
-    }
-
-    public function setRegisterKey(?string $registerKey): self
-    {
-        $this->registerKey = $registerKey;
-
-        return $this;
-    }
 }
