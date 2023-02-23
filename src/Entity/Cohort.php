@@ -33,10 +33,14 @@ class Cohort
     #[ORM\ManyToMany(targetEntity: Trainings::class, mappedBy: 'cohorts')]
     private Collection $trainings;
 
+    #[ORM\ManyToMany(targetEntity: RegisterKey::class, mappedBy: 'cohorts')]
+    private Collection $registerKeys;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->trainings = new ArrayCollection();
+        $this->registerKeys = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,6 +136,33 @@ class Cohort
     {
         if ($this->trainings->removeElement($training)) {
             $training->removeCohort($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RegisterKey>
+     */
+    public function getRegisterKeys(): Collection
+    {
+        return $this->registerKeys;
+    }
+
+    public function addRegisterKey(RegisterKey $registerKey): self
+    {
+        if (!$this->registerKeys->contains($registerKey)) {
+            $this->registerKeys->add($registerKey);
+            $registerKey->addCohort($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegisterKey(RegisterKey $registerKey): self
+    {
+        if ($this->registerKeys->removeElement($registerKey)) {
+            $registerKey->removeCohort($this);
         }
 
         return $this;

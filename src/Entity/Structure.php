@@ -30,10 +30,14 @@ class Structure
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'structures')]
     private Collection $users;
 
+    #[ORM\ManyToMany(targetEntity: RegisterKey::class, mappedBy: 'structures')]
+    private Collection $registerKeys;
+
     public function __construct()
     {
         $this->cohorts = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->registerKeys = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,6 +124,33 @@ class Structure
     public function removeUser(User $user): self
     {
         $this->users->removeElement($user);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RegisterKey>
+     */
+    public function getRegisterKeys(): Collection
+    {
+        return $this->registerKeys;
+    }
+
+    public function addRegisterKey(RegisterKey $registerKey): self
+    {
+        if (!$this->registerKeys->contains($registerKey)) {
+            $this->registerKeys->add($registerKey);
+            $registerKey->addStructure($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegisterKey(RegisterKey $registerKey): self
+    {
+        if ($this->registerKeys->removeElement($registerKey)) {
+            $registerKey->removeStructure($this);
+        }
 
         return $this;
     }
