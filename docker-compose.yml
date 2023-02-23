@@ -60,6 +60,7 @@ services:
     environment: 
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: learning
+      
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
