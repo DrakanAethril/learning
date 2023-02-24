@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginAuthenticator;
-use App\Repository\StructureRepository;
+use App\Repository\RegisterKeyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager, StructureRepository $structureRepo): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager, RegisterKeyRepository $registerKeyRepo): Response
     {
         $user = new User();
         $errors = [];
@@ -29,8 +29,8 @@ class RegistrationController extends AbstractController
         $validStructureKey = false;
         if($form->isSubmitted()) {
             $currentStructureKey = $form->get('registerKey')->getData();
-            $structure = $structureRepo->findOneBy(['registerKey' => $currentStructureKey]);
-            if(!empty($structure) && !empty($structure->getId()) ) {
+            $registerKey = $registerKeyRepo->findOneBy(['key_code' => $currentStructureKey]);
+            if(!empty($registerKey) && !empty($registerKey->getId()) ) {
                 $validStructureKey = true;
             } else {
                 $errorStructureKey = 'Invalid structure key';
@@ -46,7 +46,17 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->addStructure($structure);
+            if(!empty($registerKey->getStructures())) {
+                foreach($registerKey->getStructures() as $structure) {
+                    $user->addStructure($structure);
+                }
+            }
+            if(!empty($registerKey->getCohorts())) {
+                foreach($registerKey->getCohorts() as $cohort) {
+                    $user->addCohort($cohort);
+                }
+            }
+            
 
             $entityManager->persist($user);
             $entityManager->flush();
